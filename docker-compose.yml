@@ -47,7 +47,7 @@ services:
     command: python app/main.py
     tty: true
     volumes:
-      - ./backend:/app/:cached
+      - ./backend:/app:cached
       - ./.docker/.ipython:/root/.ipython:cached
     environment:
       PYTHONPATH: .
