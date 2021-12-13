@@ -26,12 +26,26 @@ def get_users(
 def create_user(db: Session, user: schemas.UserCreate):
     hashed_password = get_password_hash(user.password)
     db_user = models.User(
-        first_name=user.first_name,
-        last_name=user.last_name,
+        number=user.number,
         email=user.email,
         is_active=user.is_active,
         is_superuser=user.is_superuser,
+        
+        first_name=user.first_name,
+        last_name=user.last_name,
+        first_name_kana=user.first_name_kana,
+        last_name_kana=user.last_name_kana,
         hashed_password=hashed_password,
+        sex=user.sex,                   # 性別
+        birth=user.birth,               # 生年月日
+        tel=user.tel,                   # 電話番号
+        grade=user.grade,               # 学年
+        major=user.major,               # 学科
+        bureau=user.bureau,             # 局
+        department=user.department,     # 部門
+        position=user.position,         # 役職
+        permission=user.permission,     # 権限
+
     )
     db.add(db_user)
     db.commit()
