@@ -12,9 +12,17 @@ $ chmod +x scripts/build.sh
 ```
 3. コンテナをビルド
 ```
-$ ./scripts/build.sh
+$ docker-compose build
 ```
-4. コンテナを起動
+4. DBマイグレーション
+```
+docker-compose run --rm backend alembic upgrade head
+```
+5. Seedデータ作成
+```
+docker-compose run --rm backend python3 app/initial_data.py
+```
+6. コンテナを起動
 ```
 $ docker-compose up -d
 ```
