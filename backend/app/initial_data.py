@@ -23,16 +23,9 @@ def init() -> None:
     user.first_name_kana="たろう"
     user.last_name_kana="たなか"
     
-    user.sex="男"
-    user.birth="2000-01-01"
-    user.tel="010-0001-0001"
-    user.grade="B4"
-    user.major="機械創造工学課程"
-    user.bureau="情報局"
-    user.department="なし"
-    user.position="なし"
-
-    user.permission="developer"
+    user.type_id=0,
+    user.permission_id=0,
+    user.user_detail_id=0,
 
     create_user(db,user)
 
