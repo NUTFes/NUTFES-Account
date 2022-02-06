@@ -103,7 +103,7 @@ class UserDetailBase(BaseModel):
     department_id: int
     position_id: int
     
-class UserDetail(UserDetailBase):
+class UserDetailOut(UserDetailBase):
     pass
 
 class UserDetailCreate(UserDetailBase):
