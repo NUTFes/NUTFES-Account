@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from app.db.crud import *
-from app.db.schemas import *
+from backend.app.db.crud import *
+from backend.app.db.schemas import *
 from app.db.session import SessionLocal
 from datetime import datetime
 
