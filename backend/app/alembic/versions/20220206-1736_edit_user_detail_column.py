@@ -1,6 +1,6 @@
 """edit user_detail column
 
-Revision ID: ab26f48b83c4
+Revision ID: 90f58740d955
 Revises: 91979b40eb38
 Create Date: 2022-02-06 17:36:31.339792+09:00
 
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ab26f48b83c4'
+revision = '90f58740d955'
 down_revision = '91979b40eb38'
 branch_labels = None
 depends_on = None
