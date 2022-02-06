@@ -7,7 +7,7 @@ from .session import Base
 
 class User(Base):
     __tablename__ = "user"
-    id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True, nullable=False)
+    id = Column('id', Integer, primary_key=True, unique=True, index=True, nullable=False)
 
     number = Column('number', Integer, unique=True, index=True)
     email = Column('email', String, unique=True, index=True)
@@ -31,21 +31,21 @@ class User(Base):
 class Type(Base):
     __tablename__ = "type"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user = relationship('User', backref='user', uselist=True)
+    #user = relationship('User', backref='user', uselist=True)
     name = Column('name', String)
 
 
 class Permission(Base):
     __tablename__ = "permission"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user = relationship('User', backref='user', uselist=True)
+    #user = relationship('User', backref='user', uselist=True)
     name = Column('name', String)
 
 
 class UserDetail(Base):
     __tablename__ = "user_detail"
-    id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user = relationship('User', backref='user', uselist=False)
+    id = Column('id', Integer, primary_key=True, unique=True, index=True)
+    #user = relationship('User', backref='user', uselist=False)
 
     sex_id = Column('sex_id', ForeignKey('sex.id'), default=0)                      # 性別
     birth = Column('birth', DateTime, default=datetime(1800,1,1,0,0))               # 生年月日
@@ -62,35 +62,35 @@ class UserDetail(Base):
 class Sex(Base):
     __tablename__ = "sex"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('UserDetail', backref='user_detail', uselist=True)
+    #user_detail = relationship('UserDetail', backref='user_detail', uselist=True)
     name = Column('name', String)
 
 class Grade(Base):
     __tablename__ = "grade"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('Grade', backref='grade', uselist=True)
+    #user_detail = relationship('Grade', backref='grade', uselist=True)
     name = Column('name', String)
 
 class Major(Base):
     __tablename__ = "major"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('Major', backref='major', uselist=True)
+    #user_detail = relationship('Major', backref='major', uselist=True)
     name = Column('name', String)
 
 class Bureau(Base):
     __tablename__ = "bureau"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('Bureau', backref='bureau', uselist=True)
+    #user_detail = relationship('Bureau', backref='bureau', uselist=True)
     name = Column('name', String)
 
 class Department(Base):
     __tablename__ = "department"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('Department', backref='department', uselist=True)
+    #user_detail = relationship('Department', backref='department', uselist=True)
     name = Column('name', String)
 
 class Position(Base):
     __tablename__ = "position"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    user_detail = relationship('Position', backref='position', uselist=True)
+    #user_detail = relationship('Position', backref='position', uselist=True)
     name = Column('name', String)
