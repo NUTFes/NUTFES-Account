@@ -36,16 +36,10 @@ def create_user(db: Session, user: schemas.UserCreate):
         first_name_kana=user.first_name_kana,
         last_name_kana=user.last_name_kana,
         hashed_password=hashed_password,
-        sex=user.sex,                   # 性別
-        birth=user.birth,               # 生年月日
-        tel=user.tel,                   # 電話番号
-        grade=user.grade,               # 学年
-        major=user.major,               # 学科
-        bureau=user.bureau,             # 局
-        department=user.department,     # 部門
-        position=user.position,         # 役職
-        permission=user.permission,     # 権限
 
+        type_id=user.type_id,
+        permission_id=user.permission_id,
+        user_detail_id=user.user_detail_id,
     )
     db.add(db_user)
     db.commit()
