@@ -1,0 +1,4 @@
+- model: app.db.models.Position
+  id: 1
+  fields:
+    name: 委員長

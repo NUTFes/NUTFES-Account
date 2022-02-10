@@ -1,0 +1,4 @@
+- model: app.db.models.Permission
+  id: 1
+  fields:
+    name: admin

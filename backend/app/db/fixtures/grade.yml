@@ -1,0 +1,4 @@
+- model: app.db.models.Grade
+  id: 1
+  fields:
+    name: B4

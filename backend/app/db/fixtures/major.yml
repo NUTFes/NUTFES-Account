@@ -1,0 +1,4 @@
+- model: app.db.models.Major
+  id: 1
+  fields:
+    name: 機械創造工学課程
