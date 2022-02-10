@@ -1,0 +1,9 @@
+{
+  "model":"app.db.models.Department",
+  "data": [
+    {
+      "id":1,
+      "name":"インフラ部門"
+    }
+  ]
+}

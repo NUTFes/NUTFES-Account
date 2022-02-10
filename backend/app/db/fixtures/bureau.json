@@ -1,0 +1,9 @@
+{
+  "model":"app.db.models.Bureau",
+  "data": [
+    {
+      "id":1,
+      "name":"情報局"
+    }
+  ]
+}
