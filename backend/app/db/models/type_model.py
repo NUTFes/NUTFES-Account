@@ -8,4 +8,4 @@ class Type(Base):
   __tablename__ = "type"
   id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
   #user = relationship('User', backref='user', uselist=True)
-  name = Column('name', String)
+  name = Column('name', String(255))
