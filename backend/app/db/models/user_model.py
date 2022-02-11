@@ -4,6 +4,10 @@ from sqlalchemy.sql.functions import now
 from datetime import datetime
 from ..session import Base
 
+from .type_model import Type
+from .permission_model import Permission
+from .user_detail_model import UserDetail
+
 
 class User(Base):
     __tablename__ = "user"
@@ -18,8 +22,11 @@ class User(Base):
     hashed_password = Column('hashed_password', String)
 
     type_id = Column('type_id', ForeignKey('type.id'), default=0)
+    type = relationship(Type)
     permission_id = Column('permission_id', ForeignKey('permission.id'), default=0)
+    permission = relationship(Permission)
     user_detail_id = Column('user_detail_id', ForeignKey('user_detail.id'), default=0)
+    user_detail = relationship(UserDetail)
 
     is_active = Column('is_active', Boolean, default=True)
     is_superuser = Column('is_superuser', Boolean, default=False)

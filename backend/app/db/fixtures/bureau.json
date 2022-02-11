@@ -1,9 +1,9 @@
 {
-  "model":"app.db.models.Bureau",
+  "model": "app.db.models.bureau_model.Bureau",
   "data": [
     {
-      "id":1,
-      "name":"情報局"
+      "id": 1,
+      "name": "情報局"
     }
   ]
 }

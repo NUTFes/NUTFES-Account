@@ -1,0 +1,27 @@
+{
+  "model":"app.db.models.user_detail_model.UserDetail",
+  "data": [
+    {
+      "id": 1,
+      "sex_id": 1,
+      "birth": "1999-01-01",
+      "tel": "111-1111-1111",
+      "grade_id": 1,
+      "major_id": 1,
+      "bureau_id": 1,
+      "department_id": 1,
+      "position_id": 1
+    },
+    {
+      "id": 2,
+      "sex_id": 2,
+      "birth": "1999-01-02",
+      "tel": "111-1111-1112",
+      "grade_id": 1,
+      "major_id": 1,
+      "bureau_id": 1,
+      "department_id": 1,
+      "position_id": 1
+    }
+  ]
+}

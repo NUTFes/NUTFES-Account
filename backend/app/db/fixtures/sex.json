@@ -1,0 +1,21 @@
+{
+  "model":"app.db.models.sex_model.Sex",
+  "data": [
+    {
+      "id":0,
+      "name":"選択しない"
+    },
+    {
+      "id":1,
+      "name":"男"
+    },
+    {
+      "id":2,
+      "name":"女"
+    },
+    {
+      "id":9,
+      "name":"その他"
+    }
+  ]
+}

@@ -1,4 +1,0 @@
-- model: app.db.models.Type
-  id: 1
-  fields:
-    name: 技大祭実行委員会
