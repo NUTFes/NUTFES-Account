@@ -1,0 +1,9 @@
+{
+  "model":"app.db.models.major_model.Major",
+  "data": [
+    {
+      "id":1,
+      "name":"機械創造工学課程"
+    }
+  ]
+}

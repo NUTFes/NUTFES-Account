@@ -24,7 +24,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - db-data:/var/lib/postgresql/data:cached
+      - ./.docker/.db-data:/var/lib/postgresql/data:cached
 
   worker:
     build:
@@ -78,7 +78,3 @@ services:
       - "3000:3000"
     stdin_open: true
     tty: true
-
-
-volumes:
-  db-data:

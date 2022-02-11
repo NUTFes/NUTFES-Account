@@ -1,0 +1,9 @@
+{
+  "model":"app.db.models.permission_model.Permission",
+  "data": [
+    {
+      "id":1,
+      "name":"admin"
+    }
+  ]
+}
