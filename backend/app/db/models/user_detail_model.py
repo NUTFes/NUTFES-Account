@@ -1,7 +1,8 @@
 from sqlalchemy import Boolean, Column, Integer, String, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import now 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+JST = timezone(timedelta(hours=+9), 'JST')
 from ..session import Base
 
 from .sex_model import Sex
@@ -19,7 +20,7 @@ class UserDetail(Base):
   sex_id = Column('sex_id', Integer, ForeignKey('sex.id'), primary_key=True)                      # 性別
   sex = relationship(Sex)
   birth = Column('birth', DateTime, default=datetime(1800,1,1,0,0))               # 生年月日
-  tel = Column('tel', String, default='-')                              # 電話番号
+  tel = Column('tel', String(255), default='-')                              # 電話番号
   grade_id = Column('grade_id', Integer, ForeignKey('grade.id'), primary_key=True)                # 学年
   grade = relationship(Grade)
   major_id = Column('major_id', Integer, ForeignKey('major.id'), primary_key=True)                # 学科
@@ -31,5 +32,5 @@ class UserDetail(Base):
   position_id = Column('position_id', Integer, ForeignKey('position.id'), primary_key=True)       # 役職
   position = relationship(Position)
 
-  updated_at=Column('updated_at', DateTime, server_default=func.now(), nullable=False)
-  created_at=Column('created_at', DateTime, server_default=func.now(), nullable=False)
+  updated_at=Column('updated_at', DateTime, server_default=func.now(), default=datetime.now(JST), nullable=False)
+  created_at=Column('created_at', DateTime, server_default=func.now(), default=datetime.now(JST), nullable=False)

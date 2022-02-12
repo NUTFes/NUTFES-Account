@@ -15,16 +15,28 @@ services:
     ports:
       - 6379:6379
 
-  postgres:
-    image: postgres:12
+  mariadb:
+    image: mariadb:10.5
     restart: always
+    command:
+      - --default-authentication-plugin=mysql_native_password
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      TZ: "Asia/Tokyo"
+      MYSQL_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DB: test
     ports:
-      - '5432:5432'
+      - "3306:3306"
     volumes:
-      - ./.docker/.db-data:/var/lib/postgresql/data:cached
+      - .docker/.db-data:/var/lib/mysql:cached
+      - .docker/.db-conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - .docker/.initdb.d:/docker-entrypoint-initdb.d
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8242:8080
 
   worker:
     build:
@@ -51,9 +63,9 @@ services:
       - ./.docker/.ipython:/root/.ipython:cached
     environment:
       PYTHONPATH: .
-      DATABASE_URL: 'postgresql://postgres:password@postgres:5432/postgres'
+      DATABASE_URL: 'mysql+mysqldb://root:password@mariadb:3306/test'
     depends_on:
-      - "postgres"
+      - "mariadb"
 
   frontend-sample:
     build:
