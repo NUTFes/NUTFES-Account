@@ -8,4 +8,4 @@ class Position(Base):
     __tablename__ = "position"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
     #user_detail = relationship('Position', backref='position', uselist=True)
-    name = Column('name', String)
+    name = Column('name', String(255))

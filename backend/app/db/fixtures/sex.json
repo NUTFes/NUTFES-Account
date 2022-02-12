@@ -2,10 +2,6 @@
   "model":"app.db.models.sex_model.Sex",
   "data": [
     {
-      "id":0,
-      "name":"選択しない"
-    },
-    {
       "id":1,
       "name":"男"
     },

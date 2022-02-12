@@ -11,17 +11,6 @@ from datetime import datetime
 def init() -> None:
     db = SessionLocal()
 
-    user_detail = UserDetailCreate
-    user_detail.sex_id = 1
-    user_detail.birth = "1999-01-01"
-    user_detail.tel = "111-1111-1111"
-    user_detail.grade_id = 1
-    user_detail.major_id = 1
-    user_detail.bureau_id = 1
-    user_detail.department_id = 1
-    user_detail.position_id = 1
-    create_user_detail(db,user_detail)
-
     user = UserCreate
     user.email="admin@admin.com"
     user.password="password"
