@@ -22,11 +22,15 @@ docker-compose run --rm backend alembic upgrade head
 ```
 docker-compose run --rm backend python3 app/db/seed.py
 ```
-6. npm install
+6. Userデータ作成
+```
+docker-compose run --rm backend python3 app/initial_data.py
+```
+7. npm install
 ```
 docker-compose run --rm frontend npm install
 ```
-7. コンテナを起動
+8. コンテナを起動
 ```
 $ docker-compose up -d
 ```
