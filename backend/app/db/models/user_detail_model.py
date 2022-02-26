@@ -15,7 +15,7 @@ from .position_model import Position
 class UserDetail(Base):
   __tablename__ = "user_detail"
   id = Column('id', Integer, primary_key=True, unique=True, index=True)
-  #user = relationship('User', backref='user', uselist=False)
+  user = relationship('User', backref='user', uselist=False)
 
   sex_id = Column('sex_id', Integer, ForeignKey('sex.id'), primary_key=True)                      # 性別
   sex = relationship(Sex)
