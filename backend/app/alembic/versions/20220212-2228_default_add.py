@@ -1,6 +1,6 @@
 """default add
 
-Revision ID: 4690805fa0a3
+Revision ID: 93a5aa163cfa
 Revises: 100558759588
 Create Date: 2022-02-12 22:28:32.401597+09:00
 
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4690805fa0a3'
+revision = '93a5aa163cfa'
 down_revision = '100558759588'
 branch_labels = None
 depends_on = None
