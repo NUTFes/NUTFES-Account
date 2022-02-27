@@ -7,5 +7,5 @@ from ..session import Base
 class Sex(Base):
     __tablename__ = "sex"
     id = Column('id', Integer, primary_key=True, unique=True, index=True, autoincrement=True)
-    #user_detail = relationship('UserDetail', backref='user_detail', uselist=True)
+    users = relationship('User', back_populates='user', uselist=True)
     name = Column('name', String(255))
