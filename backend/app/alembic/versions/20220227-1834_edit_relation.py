@@ -1,8 +1,8 @@
-"""relation
+"""edit relation
 
-Revision ID: becffe72640e
-Revises: 3563bb4f4449
-Create Date: 2022-02-13 00:41:50.027020+09:00
+Revision ID: 842b6e482ce4
+Revises: 93a5aa163cfa
+Create Date: 2022-02-27 18:34:01.794457+09:00
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'becffe72640e'
-down_revision = '3563bb4f4449'
+revision = '842b6e482ce4'
+down_revision = '93a5aa163cfa'
 branch_labels = None
 depends_on = None
 
