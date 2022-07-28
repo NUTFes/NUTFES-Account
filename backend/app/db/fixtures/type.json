@@ -1,9 +1,0 @@
-{
-  "model":"app.db.models.type_model.Type",
-  "data": [
-    {
-      "id":1,
-      "name":"技大祭実行委員会"
-    }
-  ]
-}
