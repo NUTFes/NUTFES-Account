@@ -1,9 +1,0 @@
-{
-  "model":"app.db.models.position_model.Position",
-  "data": [
-    {
-      "id":1,
-      "name":"委員長"
-    }
-  ]
-}
