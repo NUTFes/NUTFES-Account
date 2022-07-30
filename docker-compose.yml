@@ -1,68 +1,32 @@
-version: '3.7'
+version: "3.7"
 services:
-
-  mariadb:
-    image: mariadb:10.5
-    restart: always
-    command:
-      - --default-authentication-plugin=mysql_native_password
+  db:
+    image: mysql:8.0
+    container_name: "ST-DB"
     environment:
-      TZ: "Asia/Tokyo"
-      MYSQL_HOST: mariadb
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DB: test
+      MYSQL_ROOT_USER: root
     ports:
-      - "3306:3306"
+      - "13306:3306"
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - .docker/.db-data:/var/lib/mysql:cached
-      - .docker/.db-conf/my.cnf:/etc/mysql/conf.d/my.cnf
-      - .docker/.initdb.d:/docker-entrypoint-initdb.d
-    
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8242:8080
+      - ./.docker/mysql-data:/var/lib/mysql
 
   backend:
-    build:
-      context: backend
-      dockerfile: Dockerfile
-    command: python app/main.py
+    image: quay.io/keycloak/keycloak:latest
+    container_name: "backend"
     ports:
-      - "8888:8888"
-    tty: true
-    volumes:
-      - ./backend:/app:cached
-      - ./.docker/.ipython:/root/.ipython:cached
+      - 8080:8080
+      - 9990:9990
+    command: start-dev
     environment:
-      PYTHONPATH: .
-      DATABASE_URL: 'mysql+mysqldb://root:password@mariadb:3306/test'
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      DB_VENDOR: MYSQL
+      DB_DATABASE: keycloak
+      DB_USER: root
+      DB_PASSWORD: password
+    volumes:
+      - ./backend:/opt/keycloak
     depends_on:
-      - "mariadb"
-
-  frontend-sample:
-    build:
-      context: frontend-sample
-      dockerfile: Dockerfile
-    stdin_open: true
-    volumes:
-      - './frontend-sample:/app:cached'
-      - './frontend-sample/node_modules:/app/node_modules:cached'
-    environment:
-      - NODE_ENV=development
-    ports:
-      - "3001:3000"
-
-  frontend:
-    build: ./frontend
-    container_name: "frontend"
-    volumes:
-      - './frontend:/usr/src/app/next-project:cached'
-    environment:
-      - NODE_ENV=development
-    command: "npm run dev"
-    ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
+      - db

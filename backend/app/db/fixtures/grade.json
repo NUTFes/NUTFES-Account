@@ -1,9 +1,0 @@
-{
-  "model": "app.db.models.grade_model.Grade",
-  "data": [
-    {
-      "id": 1,
-      "name": "B4"
-    }
-  ]
-}
