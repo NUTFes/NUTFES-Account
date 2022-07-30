@@ -1,9 +1,8 @@
-version: '3.7'
+version: "3.7"
 services:
-
   db:
     image: mysql:8.0
-    container_name: 'ST-DB'
+    container_name: "ST-DB"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_ROOT_USER: root
@@ -13,9 +12,9 @@ services:
     volumes:
       - ./.docker/mysql-data:/var/lib/mysql
 
-  api:
+  backend:
     image: quay.io/keycloak/keycloak:latest
-    container_name: 'ST-API2'
+    container_name: "backend"
     ports:
       - 8080:8080
       - 9990:9990
@@ -28,6 +27,6 @@ services:
       DB_USER: root
       DB_PASSWORD: password
     volumes:
-      - ./api:/opt/keycloak
+      - ./backend:/opt/keycloak
     depends_on:
       - db
