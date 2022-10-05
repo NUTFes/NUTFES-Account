@@ -1,4 +1,4 @@
-# stickee_account
+# stickee
 
 ## 初期手順
 以下の手順で環境を構築してください。
