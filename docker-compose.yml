@@ -2,7 +2,7 @@ version: "3.7"
 services:
   db:
     image: mysql:8.0
-    container_name: "ST-DB"
+    container_name: "mysql"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_ROOT_USER: root

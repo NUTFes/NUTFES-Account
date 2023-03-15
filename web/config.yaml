@@ -1,0 +1,8 @@
+# url: http://localhost:80
+tunnel: 67e71ec7-e087-4fd4-b031-fbd2cbaa3111
+credentials-file: /etc/cloudflared/67e71ec7-e087-4fd4-b031-fbd2cbaa3111.json
+
+ingress:
+ - hostname: account-dev.nutmeg.cloud
+   service: http://backend:8080
+ - service: http_status:404
