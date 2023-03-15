@@ -5,4 +5,8 @@
 *.db
 
 #db
-.docker/mysql-data/*
+.docker/mysql-data
+
+#web
+web/cert.pem
+backend/data/tmp
