@@ -1,18 +1,26 @@
 # stickee
 
 ## 初期手順
+
 以下の手順で環境を構築してください。
-1. クローン
-```
-$ git clone git@github.com:NUTFes/stickee.git
+
+### クローン
+
+```bash
+git clone git@github.com:NUTFes/NUTFES-Account.git
 ```
 
-2. コンテナをビルド
-```
-$ docker-compose build
+### ビルド
+
+```bash
+docker compose build
+docker compose -f docker-compose.prod.yml run --rm cloudflare tunnel login
+docker compose -f docker-compose.prod.yml run --rm cloudflare tunnel create account-dev
+docker compose -f docker-compose.prod.yml run --rm cloudflare tunnel route dns account-dev account-dev.nutmeg.cloud
 ```
 
-3. コンテナを起動
-```
-$ docker-compose up -d
+### 起動
+
+```bash
+docker compose up -d
 ```

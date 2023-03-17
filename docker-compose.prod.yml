@@ -11,3 +11,16 @@ services:
       - stickee.env
     volumes:
       - ./backend:/opt/keycloak
+
+  cloudflare:
+    build:
+      context: .docker
+      dockerfile: cloudflare.Dockerfile
+    container_name: "cloudflare"
+    volumes:
+      - ./web:/root/.cloudflared
+      - ./web:/etc/cloudflared
+    ports:
+      - 80:80
+      - 443:443
+    command: tunnel run
