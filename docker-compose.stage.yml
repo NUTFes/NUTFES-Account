@@ -3,7 +3,7 @@ services:
   cloudflare:
     image: cloudflare/cloudflared:latest
     container_name: "cloudflare"
-    volumes: [./cloudflare/prod:/home/nonroot/.cloudflared]
+    volumes: [./cloudflare/stage:/home/nonroot/.cloudflared]
     command: tunnel run
 
   backend:
