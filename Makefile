@@ -4,6 +4,7 @@ build:
 
 db-init:
 	docker compose up api -d
+	sleep 20
 	docker compose exec api psql postgres://keycloak:password@db:5432/keycloak -f init.sql
 
 db-export:
