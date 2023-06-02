@@ -1,0 +1,25 @@
+table:
+  name: keycloak_group
+  schema: public
+array_relationships:
+  - name: group_attributes
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: group_attribute
+          schema: public
+  - name: group_role_mappings
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: group_role_mapping
+          schema: public
+  - name: user_group_memberships
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: user_group_membership
+          schema: public

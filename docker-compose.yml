@@ -1,22 +1,23 @@
 version: "3.7"
 services:
-  db:
-    image: mysql:8.0
-    container_name: "mysql"
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: password
-    ports:
-      - "13306:3306"
-    command: --default-authentication-plugin=mysql_native_password
+  db: # postgres
+    image: postgres:12
+    container_name: "account_db"
     volumes:
-      - ./.docker/mysql-data:/var/lib/mysql
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
 
-  backend:
+  auth: # keycloak
     image: quay.io/keycloak/keycloak:latest
-    container_name: "backend"
+    container_name: "account_auth"
     ports:
       - 8080:8080
       - 9990:9990
@@ -24,13 +25,38 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_DB: mysql
+      KC_DB: postgres
       KC_DB_URL_DATABASE: keycloak
       KC_DB_URL_HOST: db
-      KC_DB_URL_PORT: 3306
+      KC_DB_URL_PORT: 5432
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
     volumes:
       - ./backend/themes:/opt/keycloak/themes
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
+  api: # hasura
+    build:
+      context: .docker
+      dockerfile: api.Dockerfile
+    container_name: "account_api"
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./api:/hasura
+    environment:
+      # HASURA_GRAPHQL_MIGRATIONS_DIR: /hasura/migrations
+      HASURA_GRAPHQL_METADATA_DIR: /hasura/metadata
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_DATABASE_URL: postgres://keycloak:password@db:5432/keycloak
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      # HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS256", "jwk_url": "http://keycloak:8080/auth/realms/master/protocol/openid-connect/certs" }'
+    depends_on:
+      - auth
+
+volumes:
+  db_data:
