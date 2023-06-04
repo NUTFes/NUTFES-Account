@@ -6,12 +6,17 @@ services:
     volumes: [./cloudflare/stage:/home/nonroot/.cloudflared]
     command: tunnel run
 
-  backend:
+  auth: # keycloak
     image: quay.io/keycloak/keycloak:latest
-    container_name: "backend"
-    ports:
-      - 8080:8080
-      - 9990:9990
+    container_name: "account_auth"
     command: start-dev
     env_file: [account.env]
     volumes: [./backend:/opt/keycloak]
+
+  api: # hasura
+    build:
+      context: .docker
+      dockerfile: api.Dockerfile
+    container_name: "account_api"
+    volumes: [./api:/hasura]
+    env_file: [account.env]
