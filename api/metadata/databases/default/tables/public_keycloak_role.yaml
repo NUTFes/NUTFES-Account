@@ -1,0 +1,11 @@
+table:
+  name: keycloak_role
+  schema: public
+array_relationships:
+  - name: role_attributes
+    using:
+      foreign_key_constraint_on:
+        column: role_id
+        table:
+          name: role_attribute
+          schema: public
