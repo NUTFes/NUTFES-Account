@@ -18,6 +18,5 @@ services:
       context: .docker
       dockerfile: api.Dockerfile
     container_name: "account_api"
-    volumes:
-      - ./api:/hasura
+    volumes: [./api:/hasura]
     env_file: [account.env]

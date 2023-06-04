@@ -1,8 +1,12 @@
-tunnel: <tunnel-id>
-credentials-file: /home/nonroot/.cloudflared/<tunnel-id>.json
+tunnel: cc00a177-6833-4855-a23f-6bc9f9d5bc5c
+credentials-file: /home/nonroot/.cloudflared/cc00a177-6833-4855-a23f-6bc9f9d5bc5c.json
 protocol: http2
 
 ingress:
+ - hostname: auth.nutfes.net
+   service: http://auth:8080
+ - hostname: account-api.nutfes.net
+   service: http://api:8080
  - hostname: account.nutfes.net
-   service: http://backend:8080
+   service: http://front:8080
  - service: http_status:404
