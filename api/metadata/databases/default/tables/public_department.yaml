@@ -1,0 +1,7 @@
+table:
+  name: department
+  schema: public
+object_relationships:
+  - name: keycloak_group
+    using:
+      foreign_key_constraint_on: group_id
