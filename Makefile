@@ -18,4 +18,4 @@ prod-build:
 prod-db-init:
 	docker-compose -f docker-compose.prod.yml up api -d
 	sleep 20
-	docker-compose -f docker-compose.prod.yml exec api psql postgres://keycloak:password@db:5432/keycloak -f init.sql
+	docker-compose -f docker-compose.prod.yml exec api psql ${HASURA_GRAPHQL_DATABASE_URL}= -f init.sql
