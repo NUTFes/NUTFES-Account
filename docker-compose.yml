@@ -56,6 +56,18 @@ services:
       # HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS256", "jwk_url": "http://keycloak:8080/auth/realms/master/protocol/openid-connect/certs" }'
     depends_on:
       - auth
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - 3000:3000
+    command: sh -c "npm install && npm run dev"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    tty: true
 
 volumes:
   db_data:
