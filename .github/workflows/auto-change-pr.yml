@@ -1,0 +1,68 @@
+name: Automatically labeling pull request.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths: ["api/**"]
+
+jobs:
+  auto-change-pr:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      PR_ASSIGNEE: ${{ github.event.pull_request.user.login }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # 変更されたファイルを取得
+      - name: get changed files
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+            backend:
+              - 'api/**'
+              - 'backend/**'
+            infra:
+              - 'cloudflare/**'
+              - 'docker-compose.*'
+              - '**/*Dockerfile'
+
+      # ブランチ名からラベル名を取得
+      - uses: actions/github-script@v6
+        id: label_name
+        with:
+          path: .github/workflows/auto-labeling-pr.js
+          github-token: ${{ env.GH_TOKEN }}
+          script: |
+            const branchType = github.head_ref.split('/')[0]
+            const branchTypeToLabel = {
+                feature: 'enhancement',
+                fix: 'bug',
+                hotfix: 'bug',
+              };
+            core.setOutput('label_name', branchTypeToLabel[branchType] || '')
+
+      # PRにラベルを付与
+      - name: Auto frontend labeling
+        if: steps.changes.outputs.frontend
+        run: gh pr edit ${{ env.PR_NUMBER }} --add-label frontend
+      - name: Auto backend labeling
+        if: steps.changes.outputs.frontend
+        run: gh pr edit ${{ env.PR_NUMBER }} --add-label backend
+      - name: Auto infra labeling
+        if: steps.changes.outputs.frontend
+        run: gh pr edit ${{ env.PR_NUMBER }} --add-label infra
+      - name: Auto labeling
+        if: steps.label_name.outputs.label_name
+        run: gh pr edit ${{ env.PR_NUMBER }} --add-label ${{ steps.label_name.outputs.label_name }}
+
+      # PRにAssigneeを付与
+      - name: Auto assignee
+        if: toJSON(github.event.pull_request.assignees) == '[]'
+        run: gh pr edit ${{ env.PR_NUMBER }} --add-assignee ${{ env.PR_ASSIGNEE }}
