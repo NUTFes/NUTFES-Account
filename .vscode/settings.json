@@ -1,5 +1,4 @@
 {
-  "ansible.python.interpreterPath": "/usr/bin/python3",
   "eslint.workingDirectories": ["./frontend"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
