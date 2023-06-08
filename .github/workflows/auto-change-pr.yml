@@ -13,6 +13,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PR_NUMBER: ${{ github.event.pull_request.number }}
       PR_ASSIGNEE: ${{ github.event.pull_request.user.login }}
+      PR_BRANCH: ${{ github.event.pull_request.head.ref }}
 
     steps:
       - uses: actions/checkout@v2
@@ -40,7 +41,8 @@ jobs:
           path: .github/workflows/auto-labeling-pr.js
           github-token: ${{ env.GH_TOKEN }}
           script: |
-            const branchType = github.event.pull_request.head.ref.split('/')[0]
+            const env = process.env;
+            const branchType = env.PR_BRANCH.split('/')[0]
             const branchTypeToLabel = {
                 feature: 'enhancement',
                 fix: 'bug',
