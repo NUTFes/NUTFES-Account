@@ -40,7 +40,7 @@ jobs:
           path: .github/workflows/auto-labeling-pr.js
           github-token: ${{ env.GH_TOKEN }}
           script: |
-            const branchType = github.head_ref.split('/')[0]
+            const branchType = ${{ github.head_ref }}.split('/')[0]
             const branchTypeToLabel = {
                 feature: 'enhancement',
                 fix: 'bug',
