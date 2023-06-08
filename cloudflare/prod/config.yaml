@@ -3,10 +3,10 @@ credentials-file: /home/nonroot/.cloudflared/cc00a177-6833-4855-a23f-6bc9f9d5bc5
 protocol: http2
 
 ingress:
- - hostname: auth.nutfes.net
-   service: http://auth:8080
- - hostname: account-api.nutfes.net
-   service: http://api:8080
- - hostname: account.nutfes.net
-   service: http://front:8080
- - service: http_status:404
+  - hostname: auth.nutfes.net
+    service: http://auth:8080
+  - hostname: account-api.nutfes.net
+    service: http://api:8080
+  - hostname: account.nutfes.net
+    service: http://front:3000
+  - service: http_status:404
