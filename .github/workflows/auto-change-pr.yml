@@ -42,6 +42,7 @@ jobs:
           github-token: ${{ env.GH_TOKEN }}
           script: |
             const env = process.env;
+            echo(`PR_BRANCH: ${env.PR_BRANCH}`);
             const branchType = env.PR_BRANCH.split('/')[0]
             const branchTypeToLabel = {
                 feature: 'enhancement',
