@@ -52,13 +52,13 @@ jobs:
 
       # PRにラベルを付与
       - name: Auto frontend labeling
-        if: steps.changes.outputs.frontend
+        if: steps.changes.outputs.frontend == 'true'
         run: gh pr edit ${{ env.PR_NUMBER }} --add-label frontend
       - name: Auto backend labeling
-        if: steps.changes.outputs.frontend
+        if: steps.changes.outputs.frontend == 'true'
         run: gh pr edit ${{ env.PR_NUMBER }} --add-label backend
       - name: Auto infra labeling
-        if: steps.changes.outputs.frontend
+        if: steps.changes.outputs.frontend == 'true'
         run: gh pr edit ${{ env.PR_NUMBER }} --add-label infra
       - name: Auto labeling
         if: steps.label_name.outputs.label_name
