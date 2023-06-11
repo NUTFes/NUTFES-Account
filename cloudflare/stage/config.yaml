@@ -3,6 +3,10 @@ credentials-file: /home/nonroot/.cloudflared/<tunnel-id>.json
 protocol: http2
 
 ingress:
- - hostname: account-dev.nutmeg.cloud
-   service: http://backend:8080
- - service: http_status:404
+  - hostname: stg-auth.nutfes.net
+    service: http://auth:8080
+  - hostname: stg-account-api.nutfes.net
+    service: http://api:8080
+  - hostname: stg-account.nutfes.net
+    service: http://front:3000
+  - service: http_status:404
