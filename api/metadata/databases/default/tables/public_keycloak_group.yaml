@@ -2,6 +2,27 @@ table:
   name: keycloak_group
   schema: public
 array_relationships:
+  - name: bureaus
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: bureau
+          schema: public
+  - name: departments
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: department
+          schema: public
+  - name: grades
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: grade
+          schema: public
   - name: group_attributes
     using:
       foreign_key_constraint_on:
