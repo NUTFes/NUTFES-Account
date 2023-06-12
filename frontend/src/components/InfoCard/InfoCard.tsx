@@ -18,19 +18,19 @@ interface Props {
   }[];
 }
 
-function InfoCard(props: Props) {
+function InfoCard({ title, description, table }: Props) {
   return (
     <Card sx={{minWidth:723, maxWidth: 1023}}>
       <CardContent>
         <Typography variant="h5">
-          {props.title}
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.description}
+          {description}
         </Typography>
         <Table sx={{minWidth: 680}}>
           <TableBody>
-            {props.table.map((row) => (
+            {table.map((row) => (
               <TableRow
                 key={row.item}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -48,5 +48,6 @@ function InfoCard(props: Props) {
     </Card>
   );
 }
+
 
 export default InfoCard;
