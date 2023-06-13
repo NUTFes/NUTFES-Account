@@ -20,16 +20,16 @@ jobs:
       - run: npm install
         working-directory: frontend
 
-      - name: prettier format
-        run: npm run format
-        working-directory: frontend
+      # - name: prettier format
+      #   run: npm run format
+      #   working-directory: frontend
 
       - name: lint
         run: npm run lint:fix
         working-directory: frontend
 
-      - uses: stefanzweifel/git-auto-commit-action@v3.0.0
-        with:
-          branch: develop
-          commit_message: formatted by workflow
-          commit_options: '--no-verify'
+      # - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+      #   with:
+      #     branch: develop
+      #     commit_message: formatted by workflow
+      #     commit_options: '--no-verify'
