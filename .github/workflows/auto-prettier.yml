@@ -31,3 +31,4 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v3.0.0
         with:
           commit_message: formatted by workflow
+          commit_options: '--no-verify'
