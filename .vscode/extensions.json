@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // eslint
+    "esbenp.prettier-vscode", // prettier
+    "davidanson.vscode-markdownlint" // markdownlint
+  ]
+}

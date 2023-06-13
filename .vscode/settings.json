@@ -4,6 +4,5 @@
   "editor.formatOnSave": true,
   "markdownlint.config": {
     "MD041": false
-  },
-  "ansible.python.interpreterPath": "/opt/homebrew/bin/python3"
+  }
 }
