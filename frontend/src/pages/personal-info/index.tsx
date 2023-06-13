@@ -1,4 +1,5 @@
-import InfoCard from "@/components/InfoCard";
+import { InfoCard } from "@/components";
+
 
 // 実際はgerServerSidePropsでDBから取得する。現在はモックデータを使用
 const infoData = {
@@ -14,7 +15,7 @@ const infoData = {
 export default function PersonalInfo() {
   return (
     <div>
-      <InfoCard title={infoData.title} description={infoData.description} table={infoData.table}/>
+      <InfoCard data={infoData}/>
     </div>
   );
 }
