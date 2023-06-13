@@ -53,11 +53,13 @@ services:
     depends_on: [auth]
 
   front: # nextjs
-    build: ./frontend
+    build:
+      context: .
+      dockerfile: frontend.dev.Dockerfile
     container_name: account_front
     ports: [3000:3000]
-    command: sh -c "npm install && npm run dev"
-    volumes: [./frontend:/app]
+    command: sh -c "npm run prepare && npm install && npm run dev"
+    volumes: [.:/repo]
     environment: [WATCHPACK_POLLING=true]
 
 volumes:
