@@ -23,3 +23,55 @@ array_relationships:
         table:
           name: user_role_mapping
           schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_timestamp
+        - email_verified
+        - enabled
+        - email
+        - email_constraint
+        - federation_link
+        - first_name
+        - id
+        - last_name
+        - realm_id
+        - service_account_client_link
+        - username
+        - not_before
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+        - created_timestamp
+        - email_verified
+        - enabled
+        - email
+        - email_constraint
+        - federation_link
+        - first_name
+        - id
+        - last_name
+        - realm_id
+        - service_account_client_link
+        - username
+        - not_before
+      filter: {}
+  - role: developper
+    permission:
+      columns:
+        - created_timestamp
+        - email_verified
+        - enabled
+        - email
+        - email_constraint
+        - federation_link
+        - first_name
+        - id
+        - last_name
+        - realm_id
+        - service_account_client_link
+        - username
+        - not_before
+      filter: {}

@@ -5,3 +5,25 @@ object_relationships:
   - name: keycloak_group
     using:
       foreign_key_constraint_on: group_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - group_id
+        - name
+        - id
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+        - group_id
+        - name
+        - id
+      filter: {}
+  - role: developper
+    permission:
+      columns:
+        - group_id
+        - name
+        - id
+      filter: {}

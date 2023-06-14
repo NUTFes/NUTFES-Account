@@ -5,3 +5,28 @@ object_relationships:
   - name: user_entity
     using:
       foreign_key_constraint_on: user_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+        - user_id
+        - value
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+        - id
+        - name
+        - user_id
+        - value
+      filter: {}
+  - role: developper
+    permission:
+      columns:
+        - id
+        - name
+        - user_id
+        - value
+      filter: {}
