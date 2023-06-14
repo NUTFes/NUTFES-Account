@@ -1,12 +1,8 @@
 # env_file
-*.env
+*/**.env
 
 # keycloak
-*.db
-backend/data/tmp
-
-# db
-.docker/mysql-data
+auth/data/export/*.json
 
 # cloudflare
 cloudflare/**/cert.pem
