@@ -22,7 +22,7 @@ select_permissions:
         - user_id
         - value
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - id

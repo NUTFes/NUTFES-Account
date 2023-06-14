@@ -21,7 +21,7 @@ select_permissions:
         - group_id
         - user_id
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - group_id

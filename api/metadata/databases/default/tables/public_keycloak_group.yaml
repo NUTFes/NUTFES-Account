@@ -61,7 +61,7 @@ select_permissions:
         - parent_group
         - realm_id
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - id

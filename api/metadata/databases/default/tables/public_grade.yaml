@@ -20,7 +20,7 @@ select_permissions:
         - name
         - id
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - group_id

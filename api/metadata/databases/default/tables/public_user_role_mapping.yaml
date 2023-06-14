@@ -18,7 +18,7 @@ select_permissions:
         - role_id
         - user_id
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - role_id

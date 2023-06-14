@@ -58,7 +58,7 @@ select_permissions:
         - username
         - not_before
       filter: {}
-  - role: developper
+  - role: developer
     permission:
       columns:
         - created_timestamp
