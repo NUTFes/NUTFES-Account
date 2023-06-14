@@ -1,0 +1,82 @@
+[
+  {
+    "displayName": "NUTFES",
+    "users": [
+      {
+        "username": "test-user",
+        "enabled": true
+      },
+      {
+        "username": "test-user-2",
+        "enabled": true
+      },
+      {
+        "username": "test-user-3",
+        "enabled": true
+      },
+      {
+        "username": "test-user-4",
+        "enabled": true
+      },
+      {
+        "username": "test-user-5",
+        "enabled": true
+      },
+      {
+        "username": "test-user-6",
+        "enabled": true
+      },
+      {
+        "username": "test-user-7",
+        "enabled": true
+      },
+      {
+        "username": "test-user-8",
+        "enabled": true
+      },
+      {
+        "username": "test-user-9",
+        "enabled": true
+      },
+      {
+        "username": "test-user-10",
+        "enabled": true
+      },
+      {
+        "username": "test-user-11",
+        "enabled": true
+      },
+      {
+        "username": "test-user-12",
+        "enabled": true
+      }
+    ],
+    "groups": [
+      {
+        "name": "情報局",
+        "path": "/情報局"
+      },
+      {
+        "name": "企画局",
+        "path": "/企画局"
+      },
+      {
+        "name": "総務局",
+        "path": "/総務局"
+      },
+      {
+        "name": "渉外局",
+        "path": "/渉外局"
+      },
+      {
+        "name": "制作局",
+        "path": "/制作局"
+      },
+      {
+        "name": "財務局",
+        "path": "/財務局"
+      }
+    ],
+    "clients": []
+  }
+]

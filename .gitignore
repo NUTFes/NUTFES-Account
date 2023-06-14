@@ -2,7 +2,9 @@
 */**.env
 
 # keycloak
-auth/data/export/*.json
+auth/data/export.json
+auth/data/out*.json
+auth/data/merged.json
 
 # cloudflare
 cloudflare/**/cert.pem
