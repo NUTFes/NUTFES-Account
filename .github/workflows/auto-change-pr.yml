@@ -27,7 +27,7 @@ jobs:
               - 'frontend/**'
             backend:
               - 'api/**'
-              - 'backend/**'
+              - 'auth/**'
             infra:
               - 'cloudflare/**'
               - 'docker-compose.*'
@@ -37,7 +37,6 @@ jobs:
       - uses: actions/github-script@v6
         id: label_name
         with:
-          path: .github/workflows/auto-labeling-pr.js
           github-token: ${{ env.GH_TOKEN }}
           script: |
             const env = process.env;
