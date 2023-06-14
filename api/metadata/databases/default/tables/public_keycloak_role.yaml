@@ -9,3 +9,40 @@ array_relationships:
         table:
           name: role_attribute
           schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - client_role
+        - client
+        - client_realm_constraint
+        - description
+        - id
+        - name
+        - realm
+        - realm_id
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+        - client_role
+        - client
+        - client_realm_constraint
+        - description
+        - id
+        - name
+        - realm
+        - realm_id
+      filter: {}
+  - role: developer
+    permission:
+      columns:
+        - client_role
+        - client
+        - client_realm_constraint
+        - description
+        - id
+        - name
+        - realm
+        - realm_id
+      filter: {}
