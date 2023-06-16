@@ -1,7 +1,15 @@
-import { ChevronRight as ChevronRightIcon } from '@mui/icons-material';
-import { Box, Link, Paper, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
-import Router from 'next/router';
-import React from 'react';
+import { ChevronRight } from "@mui/icons-material";
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { useRouter } from "next/router";
+import React from "react";
 
 interface Props {
   data: {
@@ -12,43 +20,102 @@ interface Props {
       value: string;
       link: string;
     }[];
-  }
+  };
 }
 
-function InfoCard({ data }: Props) {
+const InfoCard = ({ data }: Props) => {
+  const router = useRouter();
   const handleClick = (link: string) => {
-    try {
-      Router.push(link);
-    } catch(err){
-      console.error("Not Exist Page")
-    }
-  }
+    router.push(link).catch((error) => {
+      console.error(error);
+    });
+  };
 
   return (
-    <Paper sx={{minWidth: 723, maxWidth: 1023}}>
-      <Box sx={{minWidth:680, pt: 3, px: 2, pb: 1}}>
-        <Typography variant="h5">
-          {data.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{pt: 1}}>
-          <span>
-            {data.description.split('\n').map((t, index)=> (<span key={index}>{t}<br /></span>))}
-          </span>
-        </Typography>
+    <Paper variant="outlined" sx={{ maxWidth: 784, borderRadius: 2 }}>
+      <Box sx={{ pt: 3, px: 2, pb: 1 }}>
+        <Typography variant="h5">{data.title}</Typography>
+        {data.description ? (
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ pt: 1, whiteSpace: "pre-wrap" }}
+            className="text"
+          >
+            {data.description}
+          </Typography>
+        ) : null}
       </Box>
       <Table>
         <TableBody>
           {data.table.map((row) => (
             <TableRow
               hover
-              sx={{'&:last-child td, &:last-child th': { border: 0 }}}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               onClick={() => handleClick(row.link)}
               key={row.item}
             >
-              <TableCell align="left" style={{width: 260}} sx={{color: "text.secondary"}}>{row.item}</TableCell>
-              <TableCell align="left" sx={{color: "text.secondary"}} >{row.value}</TableCell>
-              <TableCell align="right" sx={{color: "text.secondary"}} >
-                <Link href={row.link} color="inherit" underline="none" ><ChevronRightIcon/></Link>
+              <TableCell align="left" sx={{ width: 156 }}>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  {row.item}
+                </Typography>
+                {row.value ? (
+                  <Typography
+                    variant="body1"
+                    className="text"
+                    sx={{
+                      mt: 1,
+                      display: { xs: "block", sm: "none" },
+                      color: "text.primary",
+                      whiteSpace: "pre-wrap",
+                    }}
+                  >
+                    {row.value}
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    className="text"
+                    sx={{
+                      mt: 1,
+                      display: { xs: "block", sm: "none" },
+                      color: "text.secondary",
+                      whiteSpace: "pre-wrap",
+                    }}
+                  >
+                    未設定
+                  </Typography>
+                )}
+              </TableCell>
+              <TableCell align="left">
+                {row.value ? (
+                  <Typography
+                    variant="body1"
+                    className="text"
+                    sx={{
+                      color: "text.primary",
+                      whiteSpace: "pre-wrap",
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  >
+                    {row.value}
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    className="text"
+                    sx={{
+                      color: "text.secondary",
+                      whiteSpace: "pre-wrap",
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  >
+                    未設定
+                  </Typography>
+                )}
+              </TableCell>
+              <TableCell align="right">
+                <ChevronRight />
               </TableCell>
             </TableRow>
           ))}
@@ -56,7 +123,6 @@ function InfoCard({ data }: Props) {
       </Table>
     </Paper>
   );
-}
-
+};
 
 export default InfoCard;
