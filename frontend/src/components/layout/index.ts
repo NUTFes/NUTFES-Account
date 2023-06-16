@@ -1,3 +1,3 @@
-export { Layout } from "./Layout";
-export { HomeLayout } from "./HomeLayout";
-export { DetailLayout } from "./DetailLayout";
+export { default as Layout } from "./Layout";
+export { default as HomeLayout } from "./HomeLayout";
+export { default as DetailLayout } from "./DetailLayout";
