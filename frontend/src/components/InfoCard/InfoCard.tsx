@@ -32,9 +32,14 @@ const InfoCard = ({ data }: Props) => {
   };
 
   return (
-    <Paper variant="outlined" sx={{ maxWidth: 784, borderRadius: 2 }}>
+    <Paper
+      variant="outlined"
+      sx={{ maxWidth: 840, borderRadius: 2, mt: 3, mx: 1.5 }}
+    >
       <Box sx={{ pt: 3, px: 2, pb: 1 }}>
-        <Typography variant="h5">{data.title}</Typography>
+        <Typography variant="h2" sx={{ fontSize: 22 }}>
+          {data.title}
+        </Typography>
         {data.description ? (
           <Typography
             variant="body2"
@@ -56,7 +61,10 @@ const InfoCard = ({ data }: Props) => {
               key={row.item}
             >
               <TableCell align="left" sx={{ width: 156 }}>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", fontSize: 12 }}
+                >
                   {row.item}
                 </Typography>
                 {row.value ? (
