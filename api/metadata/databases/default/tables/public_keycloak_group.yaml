@@ -45,7 +45,7 @@ array_relationships:
           name: user_group_membership
           schema: public
 select_permissions:
-  - role: user
+  - role: developer
     permission:
       columns:
         - id
@@ -61,7 +61,7 @@ select_permissions:
         - parent_group
         - realm_id
       filter: {}
-  - role: developer
+  - role: user
     permission:
       columns:
         - id

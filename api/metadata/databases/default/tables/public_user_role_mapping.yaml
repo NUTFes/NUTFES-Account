@@ -6,7 +6,7 @@ object_relationships:
     using:
       foreign_key_constraint_on: user_id
 select_permissions:
-  - role: user
+  - role: developer
     permission:
       columns:
         - role_id
@@ -18,7 +18,7 @@ select_permissions:
         - role_id
         - user_id
       filter: {}
-  - role: developer
+  - role: user
     permission:
       columns:
         - role_id

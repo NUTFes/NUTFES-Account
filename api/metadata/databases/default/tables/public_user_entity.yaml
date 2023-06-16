@@ -24,7 +24,7 @@ array_relationships:
           name: user_role_mapping
           schema: public
 select_permissions:
-  - role: user
+  - role: developer
     permission:
       columns:
         - created_timestamp
@@ -40,7 +40,11 @@ select_permissions:
         - service_account_client_link
         - username
         - not_before
-      filter: {}
+      filter:
+        user_group_memberships:
+          keycloak_group:
+            name:
+              _eq: 情報局
   - role: manager
     permission:
       columns:
@@ -58,7 +62,7 @@ select_permissions:
         - username
         - not_before
       filter: {}
-  - role: developer
+  - role: user
     permission:
       columns:
         - created_timestamp
@@ -74,4 +78,6 @@ select_permissions:
         - service_account_client_link
         - username
         - not_before
-      filter: {}
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

@@ -10,7 +10,7 @@ array_relationships:
           name: role_attribute
           schema: public
 select_permissions:
-  - role: user
+  - role: developer
     permission:
       columns:
         - client_role
@@ -34,7 +34,7 @@ select_permissions:
         - realm
         - realm_id
       filter: {}
-  - role: developer
+  - role: user
     permission:
       columns:
         - client_role
