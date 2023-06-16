@@ -15,17 +15,17 @@ interface Props {
   }
 }
 
-const handleClick = (link: string) => {
-  try {
-    Router.push(link);
-  } catch(err){
-    console.error("Not Exist Page")
-  }
-}
-
 function InfoCard({ data }: Props) {
+  const handleClick = (link: string) => {
+    try {
+      Router.push(link);
+    } catch(err){
+      console.error("Not Exist Page")
+    }
+  }
+
   return (
-    <Paper sx={{minWidth: 723, maxWidth: 1023, px:2}}>
+    <Paper sx={{minWidth: 723, maxWidth: 1023}}>
       <Box sx={{minWidth:680, pt: 3, px: 2, pb: 1}}>
         <Typography variant="h5">
           {data.title}
@@ -36,24 +36,24 @@ function InfoCard({ data }: Props) {
           </span>
         </Typography>
       </Box>
-        <Table>
-          <TableBody>
-            {data.table.map((row) => (
-              <TableRow
-                hover
-                sx={{'&:last-child td, &:last-child th': { border: 0 }}}
-                onClick={() => handleClick(row.link)}
-                key={row.item}
-              >
-                <TableCell align="left" style={{width: 260}} sx={{color: "text.secondary"}}>{row.item}</TableCell>
-                <TableCell align="left" sx={{color: "text.secondary"}} >{row.value}</TableCell>
-                <TableCell align="right" sx={{color: "text.secondary"}} >
-                  <Link href={row.link} color="inherit" underline="none" ><ChevronRightIcon/></Link>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <Table>
+        <TableBody>
+          {data.table.map((row) => (
+            <TableRow
+              hover
+              sx={{'&:last-child td, &:last-child th': { border: 0 }}}
+              onClick={() => handleClick(row.link)}
+              key={row.item}
+            >
+              <TableCell align="left" style={{width: 260}} sx={{color: "text.secondary"}}>{row.item}</TableCell>
+              <TableCell align="left" sx={{color: "text.secondary"}} >{row.value}</TableCell>
+              <TableCell align="right" sx={{color: "text.secondary"}} >
+                <Link href={row.link} color="inherit" underline="none" ><ChevronRightIcon/></Link>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </Paper>
   );
 }
