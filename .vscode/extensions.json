@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint", // eslint
     "esbenp.prettier-vscode", // prettier
-    "davidanson.vscode-markdownlint" // markdownlint
+    "davidanson.vscode-markdownlint", // markdownlint
+    "wayou.vscode-todo-highlight" //todo-highlight
   ]
 }
