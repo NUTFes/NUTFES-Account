@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/data"
 
 # Merge export.json and import.json into out.json
 jq 'map(with_entries(select(.value | type != "array")))' import.json > out-elements.json

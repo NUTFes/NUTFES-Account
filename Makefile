@@ -1,4 +1,6 @@
 build:
+# セッティングをPull
+	sh ../settings/pull.sh
 # 全てのコンテナをビルド
 	docker compose down -v
 	docker compose build
@@ -28,5 +30,5 @@ auth-export:
 
 auth-import:
 # Keycloakの変更をインポート
-	docker compose run --entrypoint '' --rm auth /opt/keycloak/data/merge.sh
+	docker compose run --entrypoint '' --rm auth /opt/keycloak/merge.sh
 	docker compose run --rm auth import --file /opt/keycloak/data/merged.json
