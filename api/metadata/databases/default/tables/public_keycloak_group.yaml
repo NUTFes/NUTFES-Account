@@ -44,3 +44,28 @@ array_relationships:
         table:
           name: user_group_membership
           schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+        - parent_group
+        - realm_id
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+        - id
+        - name
+        - parent_group
+        - realm_id
+      filter: {}
+  - role: developer
+    permission:
+      columns:
+        - id
+        - name
+        - parent_group
+        - realm_id
+      filter: {}
