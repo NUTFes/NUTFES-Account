@@ -1,16 +1,22 @@
-import { useSession, signIn } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useSession, signIn } from "next-auth/react";
+import { useEffect } from "react";
 
-export default function Component() {
-  const { data: session } = useSession()
-  const router = useRouter()
+const Home: NextPage = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
-    if (session) {
-      router.push('/')
-    } else {
-      signIn('keycloak', { callbackUrl: `/` })
-    }
-  }, [session, router])
-}
+    (async () => {
+      if (session) {
+        await router.push("/");
+      } else {
+        await signIn("keycloak", { callbackUrl: `/` });
+      }
+    })();
+  }, [session, router]);
+  return <main />;
+};
+
+export default Home;
