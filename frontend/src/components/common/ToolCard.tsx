@@ -1,10 +1,4 @@
-import {
-  HomeIcon,
-  SettingsIcon,
-  PersonAddIcon,
-  EventIcon,
-  ListAltIcon,
-} from "@mui/icons-material";
+import { Home, Settings, PersonAdd, Event, ListAlt } from "@mui/icons-material";
 import {
   Card,
   List,
@@ -22,31 +16,31 @@ const ToolCard = () => {
     {
       name: "home",
       displayName: "ホーム",
-      icon: <HomeIcon />,
+      icon: <Home />,
       url: "/",
     },
     {
       name: "toolList",
       displayName: "イベント一覧",
-      icon: <EventIcon />,
+      icon: <Event />,
       url: "/",
     },
     {
       name: "participantList",
       displayName: "参加者一覧",
-      icon: <ListAltIcon />,
+      icon: <ListAlt />,
       url: "/",
     },
     {
       name: "participantEventRegistration",
       displayName: "参加者・イベント登録",
-      icon: <PersonAddIcon />,
+      icon: <PersonAdd />,
       url: "/",
     },
     {
       name: "setting",
       displayName: "設定",
-      icon: <SettingsIcon />,
+      icon: <Settings />,
       url: "/",
     },
   ];
