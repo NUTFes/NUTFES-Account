@@ -1,32 +1,86 @@
-import { Phone, AccountCircle } from "@mui/icons-material";
-import { Box, Tab, Tabs } from "@mui/material";
-import React from "react";
-
-interface LinkTabProps {
-  label?: string;
-  href?: string;
-  icon?: React.ReactElement;
-}
-
-const LinkTab = (props: LinkTabProps) => (
-  <Tab iconPosition="start" component="a" {...props} />
-);
+import { AccountCircle, ListAlt, QrCode } from "@mui/icons-material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { useRouter } from "next/router";
 
 const SideTab = () => {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const router = useRouter();
+  const handleClick = (link: string) => {
+    router.push(link).catch((error) => {
+      console.error(error);
+    });
   };
 
+  const tabs = [
+    {
+      key: "home",
+      name: "ホーム",
+      icon: <AccountCircle />,
+      url: "/",
+    },
+    {
+      key: "personal-info",
+      name: "個人情報",
+      icon: <ListAlt />,
+      url: "/personal-info",
+    },
+    {
+      key: "qrcode",
+      name: "学祭QRコード",
+      icon: <QrCode />,
+      url: "/qrcode",
+    },
+  ];
+
   return (
-    <Box sx={{ maxWidth: 280 }}>
-      <Tabs value={value} onChange={handleChange} orientation="vertical">
-        <LinkTab icon={<AccountCircle />} label="ホーム" href="/" />
-        <LinkTab icon={<Phone />} label="個人情報" href="/personal-info" />
-        <LinkTab icon={<Phone />} label="Page Three" href="#" />
-      </Tabs>
-    </Box>
+    <List sx={{ width: 280 }}>
+      {tabs.map((tab) => (
+        <ListItem
+          key={tab.key}
+          disablePadding
+          sx={{
+            width: 280,
+            height: 44,
+          }}
+        >
+          <ListItemButton
+            autoFocus={router.pathname === tab.url}
+            onClick={() => handleClick(tab.url)}
+            sx={{
+              borderTopRightRadius: 22,
+              borderBottomRightRadius: 22,
+              color: "text.secondary",
+              "&:focus": {
+                backgroundColor: "#E8F0FE",
+                color: "#1967D2",
+              },
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                ml: 1,
+                color:
+                  router.pathname === tab.url ? "#1967D2" : "text.secondary",
+              }}
+            >
+              {tab.icon}
+            </ListItemIcon>
+            <ListItemText
+              primary={tab.name}
+              sx={{
+                width: 200,
+                height: 20,
+              }}
+            />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
   );
 };
 

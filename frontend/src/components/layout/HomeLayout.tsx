@@ -12,9 +12,7 @@ const HomeLayout = ({ children }: LayoutProps) => (
       <HeadTab />
     </Header>
     <main className="flex h-full">
-      <aside className="w-72 bg-blue-200">
-        <SideTab />
-      </aside>
+      <SideTab />
       <section className="h-screen grow bg-green-200">{children}</section>
     </main>
     <footer className="bg-gray-400">
