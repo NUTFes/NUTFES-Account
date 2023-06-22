@@ -58,18 +58,13 @@ const SideTab = () => {
               "&:focus": {
                 backgroundColor: "#E8F0FE",
                 color: "#1967D2",
+                "& .MuiListItemIcon-root": {
+                  color: "#1967D2",
+                },
               },
             }}
           >
-            <ListItemIcon
-              sx={{
-                ml: 1,
-                color:
-                  router.pathname === tab.url ? "#1967D2" : "text.secondary",
-              }}
-            >
-              {tab.icon}
-            </ListItemIcon>
+            <ListItemIcon>{tab.icon}</ListItemIcon>
             <ListItemText
               primary={tab.name}
               sx={{
