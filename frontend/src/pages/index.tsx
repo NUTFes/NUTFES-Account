@@ -24,6 +24,7 @@ const Home: NextPage = () => {
     <main>
       <div className="flex h-screen w-full items-center justify-center">
         <div className="w-1/3">
+          <Header />
           <Card
             sx={{
               width: "100%",
