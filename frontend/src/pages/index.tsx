@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 import { useSession, signIn } from "next-auth/react";
 import { useEffect } from "react";
 
+import Header from "@/components/common/Header";
+
 const Home: NextPage = () => {
+  Header();
   const { data: session } = useSession();
   const router = useRouter();
 
