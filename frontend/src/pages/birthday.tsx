@@ -1,20 +1,8 @@
-import { Paper } from "@mui/material";
 import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useState } from "react";
 
 import { DetailLayout } from "@/components/layout";
 
 export const Birthday: NextPage = () => {
-  const [date, setDate] = useState(new Date());
-
-  const router = useRouter();
-  const handleClick = (link: string) => {
-    router.push(link).catch((error) => {
-      console.error(error);
-    });
-  };
-
   const details = {
     title: "生年月日",
     description:
@@ -24,8 +12,8 @@ export const Birthday: NextPage = () => {
   return (
     <main>
       <div>
-        <DetailLayout data={details}>
-          <Paper variant="outlined" sx={{ width: 550, height: 600 }} />
+        <DetailLayout title={details.title} description={details.description}>
+          test
         </DetailLayout>
       </div>
     </main>

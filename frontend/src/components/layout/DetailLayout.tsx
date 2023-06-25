@@ -1,12 +1,12 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Typography, IconButton } from "@mui/material";
+import { Box, Divider, Typography, IconButton, Paper } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
+import { ReactNode } from "react";
 
 type Props = {
   title: string;
   description: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const DetailLayout = ({ title, description, children }: Props) => {
@@ -15,9 +15,9 @@ const DetailLayout = ({ title, description, children }: Props) => {
   const isAuthenticated = true;
   const backPage = () => {
     if (isAuthenticated) {
-      router.push("/personal-info");
+      router.push("/personal-info").catch((err) => console.error(err));
     } else {
-      router.push("/");
+      router.push("/").catch((err) => console.error(err));
     }
   };
   return (
@@ -25,22 +25,41 @@ const DetailLayout = ({ title, description, children }: Props) => {
       {/* TODO: childrenを持たないHeaderを配置 */}
       {/* SideTabは配置しない */}
 
-      <div className="sticky z-10 w-full border-b border-slate-300 bg-white">
+      <div className="sticky z-10 w-full bg-white">
         <div className="flex h-14 items-center justify-center">
           <IconButton aria-label="delete" color="primary" onClick={backPage}>
             <ArrowBackIcon color="action" />
           </IconButton>
-          <Typography sx={{ width: 550 }} style={{ fontSize: "28px" }}>
+          <Typography sx={{ width: 550 }} style={{ fontSize: 28 }}>
             {title}
           </Typography>
         </div>
       </div>
 
+      <Divider sx={{ display: { md: "none", lg: "block" } }} />
+
       <div className="flex flex-col items-center justify-center overflow-y-scroll px-6 pt-6">
         <div className="mb-8 max-w-xl">
           <Typography color="text.secondary">{description}</Typography>
         </div>
-        <div className="w-full max-w-xl">{children}</div>
+        <Paper
+          variant="outlined"
+          sx={{
+            borderRadius: 2,
+            width: 660,
+            minHeight: 100,
+            display: { xs: "none", sm: "block" },
+          }}
+        >
+          {children}
+        </Paper>
+        <Box
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        >
+          {children}
+        </Box>
       </div>
       {/* TODO: Footerを配置 */}
     </>
