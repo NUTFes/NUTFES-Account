@@ -12,7 +12,7 @@ export const Phone: NextPage = () => {
     });
   };
   return (
-    <DetailLayout>
+    <DetailLayout title="hoge" description="fuga">
       <div className="flex h-screen w-full items-center justify-center">
         <div className="w-1/3">
           <Card
