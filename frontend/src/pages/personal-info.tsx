@@ -1,4 +1,5 @@
 import { InfoCard } from "@/components";
+import { HomeLayout } from "@/components/layout";
 
 // 実際はgerServerSidePropsでDBから取得する。現在はモックデータを使用
 const address = "長岡市";
@@ -6,7 +7,7 @@ const history = "長岡技術科学大学卒業";
 const otherAddress = "";
 
 const PersonalInfo = () => (
-  <div>
+  <HomeLayout>
     <InfoCard
       data={{
         title: "住所",
@@ -53,6 +54,6 @@ const PersonalInfo = () => (
         ],
       }}
     />
-  </div>
+  </HomeLayout>
 );
 export default PersonalInfo;

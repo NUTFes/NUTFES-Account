@@ -18,14 +18,14 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     (async () => {
       if (session) {
-        await router.push("/");
+        await router.push(router.pathname);
       } else {
         await signIn("keycloak", { callbackUrl: `/` });
       }
     })();
   }, [session, router]);
 
-  return <main>{children}</main>;
+  return <div>{children}</div>;
 };
 
 export default Layout;

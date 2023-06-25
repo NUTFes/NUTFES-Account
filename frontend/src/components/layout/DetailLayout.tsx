@@ -1,16 +1,23 @@
 import React from "react";
 
+import { Header, Footer } from "@/components/common";
+
 interface LayoutProps {
   children?: React.ReactNode;
 }
 
 const DetailLayout = ({ children }: LayoutProps) => (
-  // TODO: 認証状態を確認し、未認証の場合はログイン画面にリダイレクト
   <>
-    {/* TODO: childrenを持たないHeaderを配置 */}
-    {/* SideTabは配置しない */}
-    <div>{children}</div>
-    {/* TODO: Footerを配置 */}
+    <header className="h-16 bg-gray-200">
+      <Header>
+        hoge
+        {/* TODO: DetailLayoutのtitleとBack Buttonはここ */}
+      </Header>
+    </header>
+    <main className="flex h-full">{children}</main>
+    <footer className="bg-gray-400">
+      <Footer />
+    </footer>
   </>
 );
 
