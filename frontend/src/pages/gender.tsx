@@ -2,6 +2,8 @@ import { Card, Button, Typography } from "@mui/material";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
+import { DetailLayout } from "@/components/layout";
+
 export const Gender: NextPage = () => {
   const router = useRouter();
   const handleClick = (link: string) => {
@@ -10,7 +12,7 @@ export const Gender: NextPage = () => {
     });
   };
   return (
-    <main>
+    <DetailLayout title="hoge" description="fuga">
       <div className="flex h-screen w-full items-center justify-center">
         <div className="w-1/3">
           <Card
@@ -29,7 +31,7 @@ export const Gender: NextPage = () => {
           </Card>
         </div>
       </div>
-    </main>
+    </DetailLayout>
   );
 };
 

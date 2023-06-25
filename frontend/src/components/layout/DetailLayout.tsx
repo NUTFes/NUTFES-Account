@@ -3,6 +3,8 @@ import { Box, Divider, Typography, IconButton, Paper } from "@mui/material";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
+import { Header, Footer } from "@/components/common";
+
 type Props = {
   title: string;
   description: string;
@@ -11,19 +13,17 @@ type Props = {
 
 const DetailLayout = ({ title, description, children }: Props) => {
   const router = useRouter();
-  // TODO: 認証状態を確認し、未認証の場合はログイン画面にリダイレクト
-  const isAuthenticated = true;
   const backPage = () => {
-    if (isAuthenticated) {
-      router.push("/personal-info").catch((err) => console.error(err));
-    } else {
-      router.push("/").catch((err) => console.error(err));
-    }
+    router.push("/personal-info").catch((err) => console.error(err));
   };
   return (
     <>
-      {/* TODO: childrenを持たないHeaderを配置 */}
-      {/* SideTabは配置しない */}
+      <header className="h-16 bg-gray-200">
+        <Header>
+          hoge
+          {/* TODO: DetailLayoutのtitleとBack Buttonはここ */}
+        </Header>
+      </header>
 
       <div className="sticky z-10 w-full bg-white">
         <div className="flex h-14 items-center justify-center">
@@ -42,26 +42,30 @@ const DetailLayout = ({ title, description, children }: Props) => {
         <div className="mb-8 max-w-xl">
           <Typography color="text.secondary">{description}</Typography>
         </div>
-        <Paper
-          variant="outlined"
-          sx={{
-            borderRadius: 2,
-            width: 660,
-            minHeight: 100,
-            display: { xs: "none", sm: "block" },
-          }}
-        >
-          {children}
-        </Paper>
-        <Box
-          sx={{
-            display: { xs: "block", sm: "none" },
-          }}
-        >
-          {children}
-        </Box>
+        <main className="flex h-full">
+          <Paper
+            variant="outlined"
+            sx={{
+              borderRadius: 2,
+              width: 660,
+              minHeight: 100,
+              display: { xs: "none", sm: "block" },
+            }}
+          >
+            {children}
+          </Paper>
+          <Box
+            sx={{
+              display: { xs: "block", sm: "none" },
+            }}
+          >
+            {children}
+          </Box>
+        </main>
       </div>
-      {/* TODO: Footerを配置 */}
+      <footer className="bg-gray-400">
+        <Footer />
+      </footer>
     </>
   );
 };
