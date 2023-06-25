@@ -39,7 +39,7 @@ const Header = ({ children }: Props, props: ElevationScrollProps) => (
     <AppBar
       sx={{
         position: "sticky",
-        backgroundColor: "rgba(255,255,255,0.9)",
+        backgroundColor: "rgba(255,255,255,0.95)",
       }}
       elevation={0}
     >
