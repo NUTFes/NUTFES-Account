@@ -1,8 +1,11 @@
 import { Card, Button, Typography } from "@mui/material";
 import { NextPage } from "next";
 
+import Header from "@/components/common/Header";
+
 const Home: NextPage = () => (
-  <main>
+  <>
+    <Header />
     <div className="flex h-screen w-full items-center justify-center">
       <div className="w-1/3">
         <Card
@@ -21,7 +24,7 @@ const Home: NextPage = () => (
         </Card>
       </div>
     </div>
-  </main>
+  </>
 );
 
 export default Home;
