@@ -29,7 +29,7 @@ const SideTab = () => {
           }}
         >
           <ListItemButton
-            onClick={() => handleClick(tab.href)}
+            onClick={() => handleClick(tab.href || "#")}
             sx={
               router.pathname === tab.href
                 ? {
@@ -53,7 +53,7 @@ const SideTab = () => {
           >
             <ListItemIcon>{tab.icon}</ListItemIcon>
             <ListItemText
-              primary={tab.displayName}
+              primary={tab.name}
               sx={{
                 width: 200,
                 height: 20,
