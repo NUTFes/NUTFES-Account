@@ -18,31 +18,28 @@ const DetailLayout = ({ title, description, children }: Props) => {
   };
   return (
     <>
-      <header className="h-16 bg-gray-200">
-        <Header>
-          hoge
-          {/* TODO: DetailLayoutのtitleとBack Buttonはここ */}
-        </Header>
-      </header>
-
-      <div className="sticky z-10 w-full bg-white">
+      <Header>
         <div className="flex h-14 items-center justify-center">
           <IconButton aria-label="delete" color="primary" onClick={backPage}>
             <ArrowBackIcon color="action" />
           </IconButton>
-          <Typography sx={{ width: 550 }} style={{ fontSize: 28 }}>
+          <Typography
+            color="text.primary"
+            sx={{ width: 550 }}
+            style={{ fontSize: 28 }}
+          >
             {title}
           </Typography>
         </div>
-      </div>
-
-      <Divider sx={{ display: { md: "none", lg: "block" } }} />
-
-      <div className="flex flex-col items-center justify-center overflow-y-scroll px-6 pt-6">
+      </Header>
+      <Divider
+        sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}
+      />
+      <div className="flex flex-col items-center justify-center px-6 pt-6">
         <div className="mb-8 max-w-xl">
           <Typography color="text.secondary">{description}</Typography>
         </div>
-        <main className="flex h-full">
+        <main className="flex h-screen">
           <Paper
             variant="outlined"
             sx={{

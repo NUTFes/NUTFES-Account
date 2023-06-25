@@ -17,15 +17,13 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      if (session) {
-        await router.push(router.pathname);
-      } else {
-        await signIn("keycloak", { callbackUrl: `/` });
+      if (session === null) {
+        await signIn("keycloak", { callbackUrl: "/" });
       }
     })();
   }, [session, router]);
 
-  return <div>{children}</div>;
+  return children;
 };
 
 export default Layout;

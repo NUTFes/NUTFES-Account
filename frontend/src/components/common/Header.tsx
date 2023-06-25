@@ -1,36 +1,79 @@
-import { AppBar, Avatar } from "@mui/material";
-import React from "react";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Container,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  useScrollTrigger,
+} from "@mui/material";
+import { ReactNode, ReactElement, cloneElement } from "react";
 
 import HeaderLogo from "../icons/HeaderLogo";
 
 interface Props {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
-const Header = ({ children }: Props) => (
-  <>
+interface ElevationScrollProps {
+  children?: ReactElement;
+  window?: () => Window;
+}
+
+function ElevationScroll(props: ElevationScrollProps) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+
+  return cloneElement(children!, {
+    elevation: trigger ? 4 : 0,
+  });
+}
+
+const Header = ({ children }: Props, props: ElevationScrollProps) => (
+  <ElevationScroll {...props}>
     <AppBar
       sx={{
-        height: "4rem",
-        display: "flex",
-        flexDirection: "row",
-        alignContent: "center",
-        padding: "0.5rem",
-        backgroundColor: "#FFFFFF",
+        position: "sticky",
+        backgroundColor: "rgba(255,255,255,0.96)",
       }}
       elevation={0}
     >
-      <div className="flex h-12 items-center justify-end">
-        <HeaderLogo height={24} width={157} />
-      </div>
-      <div className="ml-auto flex h-12 items-center justify-center pb-1 pl-1.5 pr-0.5 pt-1">
-        <div className="h-10 p-1">
-          <Avatar className="h-8 w-8" src="/favicon.ico" />
-        </div>
-      </div>
+      <Container maxWidth="xl">
+        <Toolbar>
+          <Box
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              // display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            <HeaderLogo height={24} width={157} />
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/favicon.ico" />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        </Toolbar>
+        {children}
+      </Container>
     </AppBar>
-    {children}
-  </>
+  </ElevationScroll>
 );
 
 export default Header;
