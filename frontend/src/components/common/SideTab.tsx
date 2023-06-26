@@ -18,21 +18,17 @@ const SideTab = () => {
   };
 
   return (
-    <List sx={{ width: 280 }}>
+    <List sx={{ pt: "20px", pb: 0, width: "100%" }}>
       {Tabs.map((tab) => (
-        <ListItem
-          key={tab.key}
-          disablePadding
-          sx={{
-            width: 280,
-            height: 44,
-          }}
-        >
+        <ListItem key={tab.key} disablePadding>
           <ListItemButton
             onClick={() => handleClick(tab.href || "#")}
             sx={
               router.pathname === tab.href
                 ? {
+                    py: "10px",
+                    pr: "16px",
+                    pl: "24px",
                     borderTopRightRadius: 25,
                     borderBottomRightRadius: 25,
                     backgroundColor: "#E8F0FE",
@@ -45,19 +41,21 @@ const SideTab = () => {
                     },
                   }
                 : {
+                    py: "10px",
+                    pr: "16px",
+                    pl: "24px",
                     borderTopRightRadius: 25,
                     borderBottomRightRadius: 25,
                     color: "text.secondary",
                   }
             }
           >
-            <ListItemIcon>{tab.icon}</ListItemIcon>
+            <ListItemIcon style={{ minWidth: "40px" }} sx={{ pr: "16px" }}>
+              {tab.icon}
+            </ListItemIcon>
             <ListItemText
+              sx={{ width: "220px", height: "20px" }}
               primary={tab.name}
-              sx={{
-                width: 200,
-                height: 20,
-              }}
             />
           </ListItemButton>
         </ListItem>
