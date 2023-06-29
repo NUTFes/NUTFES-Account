@@ -1,8 +1,6 @@
 import { AccountCircle, ListAlt, QrCode } from "@mui/icons-material";
 
-import { TabItem } from "@/type/common";
-
-export const Tabs: TabItem[] = [
+export const TABS = [
   {
     key: "home",
     name: "ホーム",
@@ -21,4 +19,4 @@ export const Tabs: TabItem[] = [
     icon: <QrCode />,
     href: "/qrcode",
   },
-];
+] as const;
