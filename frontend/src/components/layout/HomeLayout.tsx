@@ -15,7 +15,7 @@ const HomeLayout = ({ children }: LayoutProps) => (
       <aside className="hidden w-72 shrink-0 lg:block">
         <SideTab />
       </aside>
-      <section className="h-screen w-full bg-green-200">{children}</section>
+      <section className="h-screen w-full">{children}</section>
     </main>
   </>
 );
