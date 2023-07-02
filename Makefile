@@ -40,6 +40,6 @@ prod-build:
 	git pull origin develop
 	sh ../settings/pull.sh
 # 全てのコンテナをビルド
-	docker compose -f docker-compose.prod.yml build
+	docker-compose -f docker-compose.prod.yml build
 # Next.js初期構築
-	docker compose -f docker-compose.prod.yml up -d
+	docker-compose -f docker-compose.prod.yml up -d
