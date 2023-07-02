@@ -10,10 +10,10 @@ services:
     image: quay.io/keycloak/keycloak:latest
     container_name: "account_auth"
     command: start-dev
-    env_file: [account.env]
     volumes:
       - ./auth/merge.sh:/opt/keycloak/merge.sh
       - ./auth/themes:/opt/keycloak/themes
+    env_file: [../settings/account/production.env]
 
   api: # hasura
     build:
@@ -21,7 +21,7 @@ services:
       dockerfile: api.Dockerfile
     container_name: "account_api"
     volumes: [./api:/hasura]
-    env_file: [account.env]
+    env_file: [../settings/account/production.env]
 
   front: # nextjs
     build:
@@ -30,5 +30,4 @@ services:
     container_name: account_front
     command: sh -c "npm install && npm run build && npm run start"
     volumes: [.:/repo]
-    environment: [WATCHPACK_POLLING=true]
-    env_file: [account.env]
+    env_file: [../settings/account/production.env]
