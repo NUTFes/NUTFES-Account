@@ -22,7 +22,9 @@ services:
     env_file: [account.env]
 
   front: # nextjs
-    build: ./frontend
+    build:
+      context: .docker
+      dockerfile: frontend.Dockerfile
     container_name: account_front
     command: sh -c "npm install && npm run build && npm run start"
     volumes: [./frontend:/app]
