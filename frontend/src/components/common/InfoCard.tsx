@@ -11,19 +11,15 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 
-interface Props {
-  data: {
-    title: string;
-    description: string;
-    table: {
-      item: string;
-      value: string;
-      link: string;
-    }[];
-  };
+import { LinkTable } from "@/type/common";
+
+export interface InfoCardProps {
+  title: string;
+  description?: string;
+  table: LinkTable[];
 }
 
-const InfoCard = ({ data }: Props) => {
+const InfoCard = ({ title, description, table }: InfoCardProps) => {
   const router = useRouter();
   const handleClick = (link: string) => {
     router.push(link).catch((error) => {
@@ -38,34 +34,34 @@ const InfoCard = ({ data }: Props) => {
     >
       <Box sx={{ pt: 3, px: 2, pb: 1 }}>
         <Typography variant="h2" sx={{ fontSize: 22 }}>
-          {data.title}
+          {title}
         </Typography>
-        {data.description ? (
+        {description ? (
           <Typography
             variant="body2"
             color="text.secondary"
             sx={{ pt: 1, whiteSpace: "pre-wrap" }}
             className="text"
           >
-            {data.description}
+            {description}
           </Typography>
         ) : null}
       </Box>
       <Table>
         <TableBody>
-          {data.table.map((row) => (
+          {table.map((row) => (
             <TableRow
               hover
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              onClick={() => handleClick(row.link)}
-              key={row.item}
+              onClick={() => handleClick(row.href)}
+              key={row.key}
             >
               <TableCell align="left" sx={{ width: 156 }}>
                 <Typography
                   variant="body2"
                   sx={{ color: "text.secondary", fontSize: 12 }}
                 >
-                  {row.item}
+                  {row.name}
                 </Typography>
                 {row.value ? (
                   <Typography

@@ -4,6 +4,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import { useRouter } from "next/router";
 
@@ -18,7 +19,9 @@ const SideTab = () => {
   };
 
   return (
-    <List sx={{ pt: "20px", pb: 0, width: "100%" }}>
+    <List
+      sx={{ pt: "20px", pb: 0, width: "100%", position: "sticky", top: "6rem" }}
+    >
       {TABS.map((tab) => (
         <ListItem key={tab.key} disablePadding>
           <ListItemButton
@@ -50,7 +53,9 @@ const SideTab = () => {
             <ListItemIcon style={{ minWidth: "40px" }} sx={{ pr: "16px" }}>
               {tab.icon}
             </ListItemIcon>
-            <ListItemText primary={tab.name} />
+            <ListItemText
+              primary={<Typography fontSize="0.875rem">{tab.name}</Typography>}
+            />
           </ListItemButton>
         </ListItem>
       ))}
