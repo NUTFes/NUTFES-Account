@@ -1,11 +1,4 @@
-# env_file
-*/**.env
-
 # keycloak
-auth/data/export.json
-auth/data/out*.json
-auth/data/merged.json
-
-# cloudflare
-cloudflare/**/cert.pem
-cloudflare/**/*.json
+settings/dev/data/export.json
+settings/dev/data/out*.json
+settings/dev/data/merged.json
