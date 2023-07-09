@@ -1,6 +1,4 @@
 build:
-# # セッティングをPull
-# 	sh ../settings/pull.sh
 # 全てのコンテナをビルド
 	docker compose down -v
 	docker compose build

@@ -26,7 +26,7 @@ services:
     volumes:
       - ./auth/merge.sh:/opt/keycloak/merge.sh
       - ./auth/themes:/opt/keycloak/themes
-      - ./auth/data:/opt/keycloak/data # required unlock for git-crypt
+      - ./settings/dev/data:/opt/keycloak/data # required unlock for git-crypt
     depends_on:
       db:
         condition: service_healthy
