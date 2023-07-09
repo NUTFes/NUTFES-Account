@@ -19,9 +19,7 @@ const SideTab = () => {
   };
 
   return (
-    <List
-      sx={{ pt: "20px", pb: 0, width: "100%", position: "sticky", top: "6rem" }}
-    >
+    <List sx={{ pt: "20px", pb: 0, width: "100%" }}>
       {TABS.map((tab) => (
         <ListItem key={tab.key} disablePadding>
           <ListItemButton

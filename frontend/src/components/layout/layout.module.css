@@ -1,0 +1,49 @@
+.bodyContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.mainContainer {
+  flex-grow: 1;
+  margin-top: 7rem;
+  margin-left: 0;
+}
+
+.sideContainer {
+  position: fixed;
+  top: 7rem;
+  display: none;
+  width: 280px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mainContent {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 1024px) {
+  .sideContainer {
+    display: block;
+    top: 4rem;
+  }
+  .mainContainer {
+    margin-left: 280px;
+    margin-top: 4rem;
+  }
+  .mainContent {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1490px) {
+  .mainContent {
+    margin-left: 116px;
+    margin-right: 116px;
+  }
+}

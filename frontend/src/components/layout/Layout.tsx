@@ -12,18 +12,19 @@ import { useEffect, ReactNode, FC } from "react";
 // };
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     (async () => {
-      if (session === null) {
+      if (status === "unauthenticated" && router.pathname !== "/auth/signin") {
         await signIn("keycloak", { callbackUrl: "/" });
       }
     })();
-  }, [session, router]);
-
-  return children;
+  }, [router, session, status]);
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "authenticated") return children;
+  return <h1>Unauthenticated</h1>;
 };
 
 export default Layout;

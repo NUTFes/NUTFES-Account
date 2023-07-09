@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint", // eslint
     "esbenp.prettier-vscode", // prettier
     "davidanson.vscode-markdownlint", // markdownlint
-    "wayou.vscode-todo-highlight" //todo-highlight
+    "wayou.vscode-todo-highlight", // todo-highlight
+    "usernamehw.errorlens" // errorlens
   ]
 }
