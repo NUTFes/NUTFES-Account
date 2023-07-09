@@ -1,0 +1,5 @@
+# all envfile
+*/**.env filter=git-crypt diff=git-crypt
+
+# settings
+settings/** filter=git-crypt diff=git-crypt
