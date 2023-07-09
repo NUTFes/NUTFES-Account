@@ -4,11 +4,15 @@ import {
   Box,
   Container,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Tooltip,
+  Typography,
   useScrollTrigger,
 } from "@mui/material";
-import { ReactNode, ReactElement, cloneElement } from "react";
+import { signOut } from "next-auth/react";
+import { ReactElement, ReactNode, cloneElement, useState } from "react";
 
 import HeaderLogo from "../icons/HeaderLogo";
 
@@ -34,46 +38,79 @@ function ElevationScroll(props: ElevationScrollProps) {
   });
 }
 
-const Header = ({ children }: Props, props: ElevationScrollProps) => (
-  <ElevationScroll {...props}>
-    <AppBar
-      sx={{
-        position: "sticky",
-        backgroundColor: "rgba(255,255,255,0.95)",
-      }}
-      elevation={0}
-    >
-      <Container maxWidth="xl">
-        <Toolbar>
-          <Box
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              // display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            <HeaderLogo height={24} width={157} />
-          </Box>
+const Header = ({ children }: Props, props: ElevationScrollProps) => {
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const handleLogout = async () => {
+    await signOut().catch((error) => {
+      console.error(error);
+    });
+  };
+  return (
+    <ElevationScroll {...props}>
+      <AppBar
+        sx={{
+          position: "fixed",
+          backgroundColor: "rgba(255,255,255,0.95)",
+        }}
+        elevation={0}
+      >
+        <Container maxWidth="xl">
+          <Toolbar>
+            <Box
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              <HeaderLogo height={24} width={157} />
+            </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/favicon.ico" />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        </Toolbar>
-        {children}
-      </Container>
-    </AppBar>
-  </ElevationScroll>
-);
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="ここに 名前" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem key="logout" onClick={handleLogout}>
+                  <Typography textAlign="center">ログアウト</Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+          </Toolbar>
+          {children}
+        </Container>
+      </AppBar>
+    </ElevationScroll>
+  );
+};
 
 export default Header;

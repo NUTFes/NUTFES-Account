@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-sh ../settings/push.sh
 docker compose run --rm -T front sh -c "chmod +x .husky/_/husky.sh && .husky/_/husky.sh && npm run build"

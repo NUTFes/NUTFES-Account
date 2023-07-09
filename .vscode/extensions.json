@@ -4,7 +4,6 @@
     "esbenp.prettier-vscode", // prettier
     "davidanson.vscode-markdownlint", // markdownlint
     "wayou.vscode-todo-highlight", // todo-highlight
-    "mikestead.dotenv", // dotenv
-    "ms-vscode.makefile-tools" // makefile-tools
+    "usernamehw.errorlens" // errorlens
   ]
 }
