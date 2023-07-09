@@ -7,9 +7,7 @@ services:
     command: tunnel run
 
   auth: # keycloak
-    build:
-      context: .docker
-      dockerfile: auth.Dockerfile
+    image: quay.io/keycloak/keycloak:latest
     container_name: "account_auth"
     command: start-dev
     volumes:
