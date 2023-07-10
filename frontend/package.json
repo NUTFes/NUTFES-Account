@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 12345",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 12345",
     "lint": "next lint",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write \"./src/**/*.{ts,tsx}\"",
