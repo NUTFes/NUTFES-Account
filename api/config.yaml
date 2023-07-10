@@ -1,5 +1,5 @@
 version: 3
-endpoint: http://api:8080
+endpoint: http://api:12340
 metadata_directory: metadata
 actions:
   kind: synchronous
