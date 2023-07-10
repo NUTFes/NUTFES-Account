@@ -3,7 +3,7 @@ services:
   cloudflare:
     image: cloudflare/cloudflared:latest
     container_name: "cloudflare"
-    volumes: [../settings/prod/cloudflare:/home/nonroot/.cloudflared]
+    volumes: [./settings/prod/cloudflare:/home/nonroot/.cloudflared]
     command: tunnel run
 
   auth: # keycloak
@@ -11,17 +11,17 @@ services:
     container_name: "account_auth"
     command: start-dev
     volumes:
-      - ../auth/merge.sh:/opt/keycloak/merge.sh
-      - ../auth/themes:/opt/keycloak/themes
-    env_file: [../settings/prod/auth.env]
+      - ./auth/merge.sh:/opt/keycloak/merge.sh
+      - ./auth/themes:/opt/keycloak/themes
+    env_file: [./settings/prod/auth.env]
 
   api: # hasura
     build:
       context: .
       dockerfile: api.Dockerfile
     container_name: "account_api"
-    volumes: [../api:/hasura]
-    env_file: [../settings/prod/api.env]
+    volumes: [./api:/hasura]
+    env_file: [./settings/prod/api.env]
 
   front: # nextjs
     build:
@@ -29,5 +29,5 @@ services:
       dockerfile: frontend.Dockerfile
     container_name: account_front
     command: sh -c "npm install && npm run build && npm run start"
-    volumes: [..:/repo]
-    env_file: [../settings/prod/front.env]
+    volumes: [.:/repo]
+    env_file: [./settings/prod/front.env]
