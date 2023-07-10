@@ -1,8 +1,9 @@
-import { Card, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
 import { DetailLayout } from "@/components/layout";
+import { DETAIL_PAGE_CONSTANTS } from "@/constants/detailPage";
 
 export const StudentID: NextPage = () => {
   const router = useRouter();
@@ -11,26 +12,11 @@ export const StudentID: NextPage = () => {
       console.error(error);
     });
   };
+  const details = DETAIL_PAGE_CONSTANTS.studentID;
   return (
-    <DetailLayout title="hoge" description="fuga">
-      <div className="flex h-screen w-full items-center justify-center">
-        <div className="w-1/3">
-          <Card
-            sx={{
-              width: "100%",
-              height: "10rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
-          >
-            <Typography variant="h5">Comming soon StudentID Page</Typography>
-            <Button onClick={() => handleClick("/")}>Return to Home</Button>
-          </Card>
-        </div>
-      </div>
+    <DetailLayout {...details}>
+      <Typography variant="h5">Comming soon StudentID Page</Typography>
+      <Button onClick={() => handleClick("/")}>Return to Home</Button>
     </DetailLayout>
   );
 };

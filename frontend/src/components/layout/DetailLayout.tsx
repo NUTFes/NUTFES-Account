@@ -1,45 +1,89 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Divider, Typography, IconButton, Paper } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  IconButton,
+  Paper,
+  Container,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
-import { Header, Footer } from "@/components/common";
+import { Header } from "@/components/common";
 
-type Props = {
+export interface DetailLayoutProps {
   title: string;
   description: string;
   children?: ReactNode;
-};
+}
 
-const DetailLayout = ({ title, description, children }: Props) => {
+const DetailLayout = ({ title, description, children }: DetailLayoutProps) => {
   const router = useRouter();
   const backPage = () => {
     router.push("/personal-info").catch((err) => console.error(err));
   };
   return (
-    <>
+    <Container>
       <Header>
-        <div className="flex h-14 items-center justify-center">
+        {/* TODO: DetailTitleとかでコンポーネントに分けても良いかも */}
+        <Container
+          sx={{
+            display: "flex",
+            height: "3.5rem",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <IconButton aria-label="delete" color="primary" onClick={backPage}>
             <ArrowBackIcon color="action" />
           </IconButton>
           <Typography
             color="text.primary"
-            sx={{ width: 550 }}
+            sx={{
+              fontWeight: "regular",
+              width: 550,
+              display: { xs: "none", sm: "none", md: "block" },
+            }}
             style={{ fontSize: 28 }}
           >
             {title}
           </Typography>
-        </div>
+          <Typography
+            color="text.primary"
+            sx={{
+              fontWeight: "regular",
+              width: 550,
+              display: { xs: "block", sm: "block", md: "none" },
+            }}
+            style={{ fontSize: 24 }}
+          >
+            {title}
+          </Typography>
+        </Container>
+        <Divider
+          absolute
+          sx={{
+            width: "screen",
+            display: { xs: "none", sm: "none", md: "none", lg: "block" },
+          }}
+        />
       </Header>
-      <Divider
-        sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}
-      />
-      <div className="flex flex-col items-center justify-center px-6 pt-6">
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 1.5,
+          marginTop: "120px",
+        }}
+      >
         <div className="mb-8 max-w-xl">
           <Typography color="text.secondary">{description}</Typography>
         </div>
-        <main className="flex h-screen">
+        <div className="flex">
           <Paper
             variant="outlined"
             sx={{
@@ -58,12 +102,9 @@ const DetailLayout = ({ title, description, children }: Props) => {
           >
             {children}
           </Box>
-        </main>
-      </div>
-      <footer className="bg-gray-400">
-        <Footer />
-      </footer>
-    </>
+        </div>
+      </Box>
+    </Container>
   );
 };
 

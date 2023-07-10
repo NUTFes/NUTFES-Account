@@ -26,6 +26,13 @@
   margin-right: 0;
 }
 
+@media (864px < width < 1024px) {
+  .mainContainer {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .sideContainer {
     display: block;

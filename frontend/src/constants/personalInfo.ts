@@ -36,7 +36,7 @@ export const UNIVERSITY_INFO: InfoCardProps = {
   description:
     "一部の情報は、Google サービスを利用する他のユーザーに表示される場合があります。 詳細",
   table: [
-    { key: "studentId", name: "学籍番号", value: "", href: "/student-id" },
+    { key: "studentID", name: "学籍番号", value: "", href: "/student-id" },
     { key: "grade", name: "学年", value: "", href: "/grade" },
     { key: "department", name: "学科", value: "", href: "/department" },
   ],
