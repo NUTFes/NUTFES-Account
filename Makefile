@@ -1,7 +1,7 @@
 build:
 # 全てのコンテナをビルド
 	docker compose down -v
-	docker compose build
+	docker compose build --build-arg CRYPT_PATH=$$(which git-crypt)
 # Keycloakのマイグレーション
 	docker compose up -d auth
 	sleep 20 # wait for keycloak migration
