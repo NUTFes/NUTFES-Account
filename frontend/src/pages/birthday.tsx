@@ -1,8 +1,8 @@
 import { Button, Box, Stack } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs, { Dayjs } from "dayjs";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import ja from "date-fns/locale/ja";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -12,12 +12,6 @@ import { DetailLayout } from "@/components/layout";
 export const Birthday: NextPage = () => {
   const router = useRouter();
 
-  const handleClick = (link: string) => {
-    router.push(link).catch((error) => {
-      console.error(error);
-    });
-  };
-
   const details = {
     // TODO: 今後constansに移行する
     title: "生年月日",
@@ -26,9 +20,9 @@ export const Birthday: NextPage = () => {
   };
 
   // TODO: APIから取得してくる機能の実装
-  const getBirthday = () => dayjs("2022-04-17");
+  const getBirthday = (): Date => new Date(2020, 8, 21, 21, 10, 5);
 
-  const [birthday, setBirthday] = useState<Dayjs | null>(getBirthday());
+  const [birthday, setBirthday] = useState<Date | null>(getBirthday());
 
   const cancell = () => {
     router.push("/personal-info").catch((err) => console.error(err));
@@ -36,20 +30,20 @@ export const Birthday: NextPage = () => {
 
   const saveBirthday = () => {
     // TODO: birthdayを保存する機能の実装
-    console.log(birthday?.format()); // eslint-disable-line no-console
+    console.log(birthday?.getTime() === getBirthday().getTime()); // eslint-disable-line no-console
+  };
+
+  const handleBirthdayChange = (newBirthday: Date | null) => {
+    setBirthday(newBirthday);
   };
 
   return (
     <DetailLayout title={details.title} description={details.description}>
       <div className="pt-4">
         <div className="h-screen w-full items-center justify-center">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ja}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <DatePicker
-                label="生年月日の更新"
-                value={birthday}
-                onChange={(newBirthday) => setBirthday(newBirthday)}
-              />
+              <DateCalendar value={birthday} onChange={handleBirthdayChange} />
             </Box>
           </LocalizationProvider>
           <Stack
@@ -60,7 +54,7 @@ export const Birthday: NextPage = () => {
           >
             <Button onClick={cancell}>キャンセル</Button>
             <Button
-              disabled={birthday?.format() === getBirthday().format()}
+              disabled={birthday?.getTime() === getBirthday().getTime()}
               onClick={saveBirthday}
             >
               保存
