@@ -50,7 +50,12 @@ export const Birthday: NextPage = () => {
             spacing={2}
             direction="row"
             justifyContent="end"
-            sx={{ width: 1, maxWidth: 489 }}
+            sx={{
+              width: 1,
+              maxWidth: 589,
+              position: "absolute",
+              bottom: "-200px",
+            }}
           >
             <Button onClick={cancell}>キャンセル</Button>
             <Button
