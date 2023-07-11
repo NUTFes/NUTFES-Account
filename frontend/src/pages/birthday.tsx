@@ -30,7 +30,7 @@ export const Birthday: NextPage = () => {
 
   const saveBirthday = () => {
     // TODO: birthdayを保存する機能の実装
-    console.log(birthday?.getTime() === getBirthday().getTime()); // eslint-disable-line no-console
+    console.log(birthday); // eslint-disable-line no-console
   };
 
   const handleBirthdayChange = (newBirthday: Date | null) => {
@@ -55,6 +55,7 @@ export const Birthday: NextPage = () => {
             <Button onClick={cancell}>キャンセル</Button>
             <Button
               disabled={birthday?.getTime() === getBirthday().getTime()}
+              variant="contained"
               onClick={saveBirthday}
             >
               保存
