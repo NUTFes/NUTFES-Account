@@ -1,4 +1,4 @@
-import { Button, Box, Stack } from "@mui/material";
+import { Button, Box, Stack, Typography } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -34,36 +34,41 @@ export const Birthday: NextPage = () => {
   };
 
   return (
-    <DetailLayout title={details.title} description={details.description}>
-      <div className="pt-4">
-        <div className="h-auto w-full items-center justify-center">
-          <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ja}>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <DateCalendar value={birthday} onChange={handleBirthdayChange} />
-            </Box>
-          </LocalizationProvider>
-          <Stack
-            spacing={2}
-            direction="row"
-            justifyContent="end"
-            sx={{
-              width: 1,
-              maxWidth: 589,
-              position: "relative",
-              bottom: "40px",
-            }}
+    <DetailLayout {...details}>
+      <Box sx={{ pt: "16px", pb: "16px" }}>
+        <Typography
+          color="text.secondary"
+          pl={{ xs: "0px", sm: "16px" }}
+          sx={{ mb: "4px", fontSize: 12 }}
+        >
+          生年月日の更新
+        </Typography>
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ja}>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <DateCalendar value={birthday} onChange={handleBirthdayChange} />
+          </Box>
+        </LocalizationProvider>
+        <Stack
+          spacing={2}
+          direction="row"
+          justifyContent="end"
+          sx={{
+            width: 1,
+            mt: "24px",
+            mb: "8px",
+            px: "16px",
+          }}
+        >
+          <Button onClick={cancell}>キャンセル</Button>
+          <Button
+            disabled={birthday?.getTime() === getBirthday().getTime()}
+            variant="contained"
+            onClick={saveBirthday}
           >
-            <Button onClick={cancell}>キャンセル</Button>
-            <Button
-              disabled={birthday?.getTime() === getBirthday().getTime()}
-              variant="contained"
-              onClick={saveBirthday}
-            >
-              保存
-            </Button>
-          </Stack>
-        </div>
-      </div>
+            保存
+          </Button>
+        </Stack>
+      </Box>
     </DetailLayout>
   );
 };

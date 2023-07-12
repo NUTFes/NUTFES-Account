@@ -24,7 +24,7 @@ const DetailLayout = ({ title, description, children }: DetailLayoutProps) => {
     router.push("/personal-info").catch((err) => console.error(err));
   };
   return (
-    <Container>
+    <Container sx={{ mt: "120px" }}>
       <Header>
         {/* TODO: DetailTitleとかでコンポーネントに分けても良いかも */}
         <Container
@@ -43,7 +43,7 @@ const DetailLayout = ({ title, description, children }: DetailLayoutProps) => {
             sx={{
               fontWeight: "regular",
               width: 550,
-              display: { xs: "none", sm: "none", md: "block" },
+              display: { xs: "none", md: "block" },
             }}
             style={{ fontSize: 28 }}
           >
@@ -54,7 +54,7 @@ const DetailLayout = ({ title, description, children }: DetailLayoutProps) => {
             sx={{
               fontWeight: "regular",
               width: 550,
-              display: { xs: "block", sm: "block", md: "none" },
+              display: { sm: "block", md: "none" },
             }}
             style={{ fontSize: 24 }}
           >
@@ -65,44 +65,52 @@ const DetailLayout = ({ title, description, children }: DetailLayoutProps) => {
           absolute
           sx={{
             width: "screen",
-            display: { xs: "none", sm: "none", md: "none", lg: "block" },
+            display: { xs: "none", lg: "block" },
           }}
         />
       </Header>
 
+      {/* PC */}
       <Box
         sx={{
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: 1.5,
-          marginTop: "120px",
+          width: "100%",
         }}
       >
-        <div className="mb-8 max-w-xl">
-          <Typography color="text.secondary">{description}</Typography>
-        </div>
-        <div className="flex">
-          <Paper
-            variant="outlined"
-            sx={{
-              borderRadius: 2,
-              width: 660,
-              minHeight: 100,
-              display: { xs: "none", sm: "block" },
-            }}
-          >
-            {children}
-          </Paper>
-          <Box
-            sx={{
-              display: { xs: "block", sm: "none" },
-            }}
-          >
-            {children}
-          </Box>
-        </div>
+        <Typography
+          color="text.secondary"
+          fontSize="16px"
+          sx={{ fontWeight: "thin" }}
+          fontWeight="thin"
+          width={550}
+          mt="16px"
+          mb="32px"
+        >
+          {description}
+        </Typography>
+        <Paper
+          variant="outlined"
+          sx={{
+            borderRadius: 2,
+            width: 550,
+            minHeight: 100,
+            py: "7px",
+            mb: "24px",
+          }}
+        >
+          {children}
+        </Paper>
+      </Box>
+
+      {/* Mobile */}
+      <Box sx={{ display: { xs: "block", sm: "none" } }}>
+        <Typography color="text.secondary" fontSize="14px">
+          {description}
+        </Typography>
+        <Box sx={{ width: "100%" }}>{children}</Box>
       </Box>
     </Container>
   );
