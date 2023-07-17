@@ -24,7 +24,7 @@ make build
 ### Run
 
 ```bash
-docker compose up -d api
+docker compose up
 ```
 
 ## documents
