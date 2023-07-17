@@ -12,6 +12,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 30
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   auth: # keycloak
     build:
@@ -42,6 +44,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   front: # nextjs
     build:

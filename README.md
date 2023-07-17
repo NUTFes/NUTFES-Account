@@ -2,6 +2,13 @@
 
 ## Setup
 
+### Requirements
+
+- Docker
+  - [host.docker.internal の設定](https://www.notion.so/nutfes-nutmeg/host-docker-internal-6bec570bcda44d8ba80a02f306249f35?pvs=4)
+- Git
+  - [git crypt の設定](https://www.notion.so/nutfes-nutmeg/git-crypt-2588ab4c760744a38a93da4ee1ac8319?pvs=4)
+
 ### Clone
 
 ```bash
