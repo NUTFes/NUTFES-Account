@@ -1,4 +1,4 @@
-import { Grid, TextField, Stack, Button, Box, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -6,10 +6,9 @@ import { useState } from "react";
 import { DetailLayout } from "@/components/layout";
 import { DETAIL_PAGE_CONSTANTS } from "@/constants/detailPage";
 
-export const UserName: NextPage = () => {
+export const Division: NextPage = () => {
   const router = useRouter();
-  const details = DETAIL_PAGE_CONSTANTS.username;
-
+  const details = DETAIL_PAGE_CONSTANTS.division;
   // TODO: API側から名前を取得するメソッドを作成する
   const getCurrentName = (): {
     currentFirstName: string;
@@ -100,4 +99,4 @@ export const UserName: NextPage = () => {
   );
 };
 
-export default UserName;
+export default Division;

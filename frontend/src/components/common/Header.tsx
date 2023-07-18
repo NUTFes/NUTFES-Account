@@ -132,19 +132,23 @@ const Header = ({ children }: Props, props: ElevationScrollProps) => {
                 }}
               />
             </Box>
+
+            {/* Spacer */}
             <Box sx={{ flexGrow: 1 }} />
 
             {/* Help Button */}
-            <IconButton
-              sx={{
-                display: {
-                  xs: "none",
-                  sm: "block",
-                },
-              }}
-            >
-              <HelpOutline />
-            </IconButton>
+            <Box>
+              <IconButton
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                  },
+                }}
+              >
+                <HelpOutline sx={{ color: "text.secondary" }} />
+              </IconButton>
+            </Box>
 
             {/* Apps Button */}
             <Box>

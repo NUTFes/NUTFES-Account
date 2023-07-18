@@ -25,7 +25,7 @@ export const CONTACT_INFO: InfoCardProps = {
   description:
     "一部の情報は、Google サービスを利用する他のユーザーに表示される場合があります。 詳細",
   table: [
-    { key: "email", name: "メール", value: "", href: "/#" },
+    { key: "email", name: "メール", value: "", href: "/email" },
     { key: "phone", name: "電話", value: "", href: "/phone" },
   ],
 };
@@ -48,8 +48,8 @@ export const NUTFES_COMMITTEE_INFO: InfoCardProps = {
   description:
     "一部の情報は、Google サービスを利用する他のユーザーに表示される場合があります。 詳細",
   table: [
-    { key: "role", name: "役職", value: "", href: "/#" },
+    { key: "role", name: "役職", value: "", href: "/role" },
     { key: "bureau", name: "局", value: "", href: "/bureau" },
-    { key: "division", name: "部門", value: "", href: "/#" },
+    { key: "division", name: "部門", value: "", href: "/division" },
   ],
 };
