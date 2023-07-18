@@ -1,3 +1,4 @@
+import { Backdrop, CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useSession, signIn } from "next-auth/react";
 import { useEffect, ReactNode, FC } from "react";
@@ -24,7 +25,14 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   }, [router, session, status]);
   if (status === "loading") return <p>Loading...</p>;
   if (status === "authenticated") return children;
-  return <h1>Unauthenticated</h1>;
+  return (
+    <Backdrop
+      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open
+    >
+      <CircularProgress color="inherit" />
+    </Backdrop>
+  );
 };
 
 export default Layout;
