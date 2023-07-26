@@ -23,7 +23,15 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       }
     })();
   }, [router, session, status]);
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading")
+    return (
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
   if (status === "authenticated") return children;
   return (
     <Backdrop
