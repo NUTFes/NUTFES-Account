@@ -7,9 +7,7 @@ services:
     command: tunnel run
 
   auth: # keycloak
-    build:
-      context: .docker
-      dockerfile: auth.Dockerfile
+    image: quay.io/keycloak/keycloak:latest
     container_name: "account_auth"
     command: start-dev
     volumes:
@@ -18,9 +16,7 @@ services:
     env_file: [./settings/prod/auth.env]
 
   api: # hasura
-    build:
-      context: .docker
-      dockerfile: api.Dockerfile
+    image: hasura/graphql-engine:latest.cli-migrations-v3
     container_name: "account_api"
     volumes: [./api:/hasura]
     env_file: [./settings/prod/api.env]
