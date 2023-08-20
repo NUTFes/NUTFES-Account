@@ -9,9 +9,9 @@ tasks:
       # Keycloakのマイグレーション
       - docker compose up -d auth
       - sleep 20 # wait for keycloak migration
-      - make auth-export # export keycloak initial data
+      - task auth-export # export keycloak initial data
       - docker compose down -v
-      - make auth-import # import merged data
+      - task auth-import # import merged data
       # DBの変更を適用
       - docker compose exec db psql postgres://keycloak:password@db:5432/keycloak -f /sql/init.sql
       # Hasura初期構築
