@@ -43,6 +43,6 @@ tasks:
     cmds:
       - docker compose -f docker-compose.prod.yml down
       # 全てのコンテナをビルド
-      - docker-compose -f docker-compose.prod.yml build --build-arg CRYPT_PATH=$(which git-crypt)
+      - docker compose -f docker-compose.prod.yml build --build-arg CRYPT_PATH=$(which git-crypt)
       # Next.js初期構築
-      - docker-compose -f docker-compose.prod.yml up -d
+      - docker compose -f docker-compose.prod.yml up -d
